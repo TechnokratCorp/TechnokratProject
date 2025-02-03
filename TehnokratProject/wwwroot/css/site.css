@@ -1,86 +1,96 @@
-/* Современный стильный CSS */
-:root {
-    --primary-color: #4A90E2;
-    --secondary-color: #50E3C2;
-    --background-gradient: linear-gradient(135deg, #4A90E2, #50E3C2);
-    --text-color: #fff;
-    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background: var(--background-gradient);
-    color: var(--text-color);
-    text-align: left;
-    padding: 50px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f8f8;
 }
 
-.container {
-    max-width: 1000px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    text-align: justify;
-    transition: transform 0.3s ease;
+}
 
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+.description, .services {
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
 }
 
 th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+    padding: 10px;
+    text-align: center;
 }
 
 th {
-    background-color: #f2f2f2;
-}
-
-button {
-    background: var(--primary-color);
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-
-/* Стили для таблицы */
-table.aligncenter {
-    width: 60%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-}
-
-table.aligncenter th, table.aligncenter td {
-    border: 1px solid white;
-    padding: 10px;
-    text-align: left;
+    background-color: #2c3e50;
     color: white;
 }
 
-table.aligncenter th {
-    background: var(--primary-color);
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
 }
 
-
-.container ul {
-    padding-left: 200px; /* Отступ слева */
-    list-style-position: outside; /* Убедимся, что маркеры находятся за пределами текста */
-}
-
-.container li {
+li {
     text-align:left;
 }
+
+
+/* Стили для блока с изображениями в два столбца */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 2 столбца */
+    gap: 20px; /* расстояние между элементами */
+    padding: 20px;
+}
+
+.image-item {
+    text-align: center;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}    

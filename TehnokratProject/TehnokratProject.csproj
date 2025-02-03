@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\img\laptop.png" />
+    <None Include="wwwroot\img\monitor.png" />
+    <None Include="wwwroot\img\printer.png" />
+    <None Include="wwwroot\img\smartphone.png" />
+    <None Include="wwwroot\img\television.png" />
+  </ItemGroup>
+
 </Project>
