@@ -81,14 +81,53 @@ nav {
 /* Стили для блока с изображениями в два столбца */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 2 столбца */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* расстояние между элементами */
+    padding: 20px;
+    
+}
+
+.image-gallery_models {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px; /* расстояние между элементами */
     padding: 20px;
 }
 
+
 .image-item {
     text-align: center;
+   
 }
+
+.company_logo_container {
+    width: 120px; /* Фіксований розмір контейнера */
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+    .company_logo_container img {
+        max-width: 80%; /* Картинки масштабуються всередині контейнера */
+        height: auto;
+        object-fit: contain; /* Щоб зображення не спотворювалися */
+        transition: transform 0.5s ease-in-out;
+    }
+
+        .company_logo_container img:hover {
+            transform: scale(1.2); /* Масштабування при наведенні */
+        }
+
+.image-gallery_models {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
 
 img {
     max-width: 50%;
@@ -97,7 +136,41 @@ img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 30px;
     margin: 10px;
+    transition: transform 0.5s ease-in-out;
 }
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes scaleDown {
+    0% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+img {
+    width: 200px;
+    
+}
+img:hover {
+    animation: scaleUp 0.2s forwards;
+}
+
+img:not(:hover) {
+    animation: scaleDown 0.2s forwards;
+}
+   
 
 a {
     text-decoration: none;
