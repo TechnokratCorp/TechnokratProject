@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\laptop.png" />
-    <None Include="wwwroot\img\monitor.png" />
-    <None Include="wwwroot\img\printer.png" />
-    <None Include="wwwroot\img\smartphone.png" />
-    <None Include="wwwroot\img\television.png" />
+    <None Include="wwwroot\img\devices\laptop.png" />
+    <None Include="wwwroot\img\devices\monitor.png" />
+    <None Include="wwwroot\img\devices\printer.png" />
+    <None Include="wwwroot\img\devices\smartphone.png" />
+    <None Include="wwwroot\img\devices\television.png" />
   </ItemGroup>
 
   <ItemGroup>

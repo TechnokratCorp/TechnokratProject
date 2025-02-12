@@ -77,9 +77,7 @@ nav {
     background-color: #EDCE63;
 }
 
-
-/* Стили для блока с изображениями в два столбца */
-.image-gallery {
+.image_devices_gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px; /* расстояние между элементами */
@@ -87,46 +85,50 @@ nav {
     
 }
 
-.image-gallery_models {
+.image_company_logo {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px; /* расстояние между элементами */
     padding: 20px;
+    justify-items: center;
 }
 
 
 .image-item {
     text-align: center;
-   
 }
 
 .company_logo_container {
-    width: 120px; /* Фіксований розмір контейнера */
-    height: 120px;
-    display: flex;
+    width: 200px; /* Фіксований розмір контейнера */
+    height: 200px;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
+   
 }
 
     .company_logo_container img {
         max-width: 80%; /* Картинки масштабуються всередині контейнера */
-        height: auto;
+        height: 150px;
+        width: 150px;
         object-fit: contain; /* Щоб зображення не спотворювалися */
         transition: transform 0.5s ease-in-out;
-    }
+    }   
 
         .company_logo_container img:hover {
             transform: scale(1.2); /* Масштабування при наведенні */
         }
 
-.image-gallery_models {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    justify-items: center;
+
+
+
+.main_logo_img {
+  
 }
+    .main_logo_img img {
+        max-width: 100%;
+        height: auto;
+    }
 
 
 img {
@@ -160,8 +162,7 @@ img {
 }
 
 img {
-    width: 200px;
-    
+    width: 200px;  
 }
 img:hover {
     animation: scaleUp 0.2s forwards;
