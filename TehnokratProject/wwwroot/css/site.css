@@ -8,7 +8,7 @@ body {
     background-color: #EDCE63;
 }
 
-header {
+header, footer {
     background-color: #282828;
     color: white;
     text-align: center;
@@ -28,8 +28,13 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
+}
+
+nav {
+    background-color: #EDCE63;
+    
 }
 
 table {
@@ -40,9 +45,6 @@ table {
 
 table, th, td {
     border: 1px solid #282828;
-}
-
-th, td {
     padding: 10px;
     text-align: center;
 }
@@ -57,82 +59,56 @@ iframe {
     margin: 0 auto;
 }
 
-h3{
-    text-align:center;
-}
-
-footer {
-    background-color: #282828;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: auto;
-}
-
 li {
-    text-align:left;
+    text-align: left;
 }
 
-nav {
-    background-color: #EDCE63;
+.image_devices_gallery, .image_company_logo {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
 }
 
 .image_devices_gallery {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px; /* расстояние между элементами */
-    padding: 20px;
-    
 }
 
 .image_company_logo {
-    display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 20px; /* расстояние между элементами */
-    padding: 20px;
     justify-items: center;
 }
 
-
-.image-item {
-    text-align: center;
-}
-
 .company_logo_container {
-    width: 200px; /* Фіксований розмір контейнера */
+    width: 200px;
     height: 200px;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-   
 }
 
     .company_logo_container img {
-        max-width: 80%; /* Картинки масштабуються всередині контейнера */
+        max-width: 80%;
         height: 150px;
         width: 150px;
-        object-fit: contain; /* Щоб зображення не спотворювалися */
+        object-fit: contain;
         transition: transform 0.5s ease-in-out;
-    }   
-
-        .company_logo_container img:hover {
-            transform: scale(1.2); /* Масштабування при наведенні */
-        }
-
-
-
-
-.main_logo_img {
-  
-}
-    .main_logo_img img {
-        max-width: 100%;
-        height: auto;
     }
 
+        .company_logo_container img:hover {
+            transform: scale(1.2);
+        }
+
+.main_logo_img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
 
 img {
-    max-width: 50%;
+    width: 200px;
     height: auto;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -142,28 +118,25 @@ img {
 }
 
 @keyframes scaleUp {
-    0% {
+    from {
         transform: scale(1);
     }
 
-    100% {
+    to {
         transform: scale(1.2);
     }
 }
 
 @keyframes scaleDown {
-    0% {
+    from {
         transform: scale(1.2);
     }
 
-    100% {
+    to {
         transform: scale(1);
     }
 }
 
-img {
-    width: 200px;  
-}
 img:hover {
     animation: scaleUp 0.2s forwards;
 }
@@ -171,26 +144,22 @@ img:hover {
 img:not(:hover) {
     animation: scaleDown 0.2s forwards;
 }
-   
 
 a {
     text-decoration: none;
-    color: #F4D78B;
+    color: #282828;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+    a:hover {
+        text-decoration: underline;
+    }
 
-.a {
-    padding: 30px; /* Збільшений відступ між елементами */
-}
-
-.navbar-nav .nav-link {
-    font-size: 1.8rem; /* Збільшений розмір шрифту */
+.navbar {
+    background-color: #EDCE63 !important;
    
 }
 
-.navbar {
-    background-color: #EDCE63 !important; /* Фон для навігаційної панелі */
+.navbar-nav .nav-link {
+    font-size: 1.8rem;
+    margin: 20px
 }
