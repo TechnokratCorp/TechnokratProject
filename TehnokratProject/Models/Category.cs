@@ -1,6 +1,7 @@
 ﻿namespace TehnokratProject.Models
 {
-    public class Class2
+    public class Category
     {
+
     }
 }

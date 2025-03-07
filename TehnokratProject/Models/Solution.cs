@@ -1,6 +1,6 @@
 ﻿namespace TehnokratProject.Models
 {
-    public class Class
+    public class Solution
     {
     }
 }
