@@ -32,10 +32,33 @@ namespace TehnokratProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Update()
+        [HttpPost]
+        public async Task<IActionResult> EditPost(Feedback feedbacks)
         {
-            return View();
+            db.feedbacks.Update(feedbacks);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                Feedback? feedback = await db.feedbacks.FirstOrDefaultAsync(c => c.id == id);
+                if (feedback != null)
+                {
+                    return View(feedback);
+                }
+            }
+            return NotFound();
+        }
+
+
+
+        
+
+      
 
         public IActionResult Delete()
         {
