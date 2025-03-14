@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TehnokratProject.Models;
 
-namespace TehnokratProject.Controllers
+namespace TehnokratProject.Areas.User.Controllers
 {
+    [Area("User")]
     public class HomeController : Controller
     {
 
