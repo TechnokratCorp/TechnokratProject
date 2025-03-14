@@ -1,0 +1,32 @@
+﻿@model TehnokratProject.Models.Feedback
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2> Додати відгук </h2>
+
+<form asp-action="Create" asp-controller="Feedback">
+    <p>
+        <label asp-for="author_name">Ім'я</label><br />
+        <input type="text" asp-for="author_name" />
+    </p>
+    <p>
+        <label asp-for="author_email">email</label><br />
+        <input type="text" asp-for="author_email" />
+    </p>
+    <p>
+        <textarea placeholder="Напишіть відгук тут" asp-for="text"></textarea>
+    </p>
+    <p>
+        <label asp-for="rating">Оцініть нас від 1 до 5</label><br />
+        <input type="number" asp-for="rating" />
+    </p>
+    <p>
+        <input type="submit" value="Відправити відгук!" />
+    </p>
+</form>
+
+<form asp-action="index" asp-controller="product">
+    <input type="submit" value="Назад" />
+</form>

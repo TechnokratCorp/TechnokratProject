@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TehnokratProject.Controllers
+namespace TehnokratProject.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    [Area("Admin")]
+    public class ProductController : Controller
     {
-
         // CRUD - create, read, update, delete
         public IActionResult Index()
         {
@@ -20,7 +20,5 @@ namespace TehnokratProject.Controllers
         //{
 
         //}
-
-
     }
 }

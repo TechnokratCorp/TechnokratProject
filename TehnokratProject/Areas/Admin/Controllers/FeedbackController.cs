@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using TehnokratProject.Data;
 using TehnokratProject.Models;
 
-namespace TehnokratProject.Controllers
+namespace TehnokratProject.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class FeedbackController : Controller
     {
         ApplicationDbContext db;
@@ -56,9 +57,9 @@ namespace TehnokratProject.Controllers
 
 
 
-        
 
-      
+
+
 
         public IActionResult Delete()
         {
