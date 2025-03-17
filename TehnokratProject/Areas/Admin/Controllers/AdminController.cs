@@ -6,7 +6,7 @@ namespace TehnokratProject.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         // CRUD - create, read, update, delete
-        public IActionResult Index()
+        public IActionResult MainPage()
         {
             return View();
         }

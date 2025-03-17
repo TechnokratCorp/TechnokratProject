@@ -39,20 +39,69 @@ nav {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-top: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-table, th, td {
-    border: 1px solid #282828;
-    padding: 10px;
+th, td {
+    border: 1px solid #444;
+    padding: 12px;
     text-align: center;
 }
 
 th {
     background-color: #282828;
     color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
+
+/* Темний фон для першого стовпця */
+td:first-child {
+    background-color: #D1B657;
+    color: white;
+    font-weight: bold;
+}
+
+/* Основний фон */
+td {
+    background-color: #EDCE63;
+    color: #282828;
+}
+
+/* Чергування кольорів рядків */
+tr:nth-child(even) td {
+    background-color: #D1B657;
+}
+
+/* Ефект при наведенні */
+tr:hover td {
+    background-color: #FFDE6B;
+    transition: 0.3s ease-in-out;
+}
+
+/* Округлення кутів */
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
 
 iframe {
     display: block;
