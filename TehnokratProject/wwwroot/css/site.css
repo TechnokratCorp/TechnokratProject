@@ -34,7 +34,6 @@ h1, h2, h3 {
 
 nav {
     background-color: #EDCE63;
-    
 }
 
 table {
@@ -58,14 +57,12 @@ th {
     background-color: #282828;
     color: white;
     font-size: 20px;
-    font-weight: bold;
 }
 
 /* Темний фон для першого стовпця */
 td:first-child {
     background-color: #D1B657;
-    color: white;
-    font-weight: bold;
+    color: #282828;
 }
 
 /* Основний фон */
@@ -75,9 +72,9 @@ td {
 }
 
 /* Чергування кольорів рядків */
-tr:nth-child(even) td {
+/*tr:nth-child(even) td {
     background-color: #D1B657;
-}
+}*/
 
 /* Ефект при наведенні */
 tr:hover td {
@@ -206,7 +203,6 @@ a {
 
 .navbar {
     background-color: #EDCE63 !important;
-   
 }
 
 .navbar-nav .nav-link {
