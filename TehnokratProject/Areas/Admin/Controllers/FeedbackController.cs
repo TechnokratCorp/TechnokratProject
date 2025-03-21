@@ -28,6 +28,10 @@ namespace TehnokratProject.Areas.Admin.Controllers
         public async Task<IActionResult> Create(Feedback feedback)
         {
             feedback.date = DateTime.Now;
+            if (feedback.rating > 5 || feedback.rating < 0) 
+            {
+                return RedirectToAction("Index");
+            }
             db.feedbacks.Add(feedback);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -55,15 +59,19 @@ namespace TehnokratProject.Areas.Admin.Controllers
             return NotFound();
         }
 
-
-
-
-
-
-
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id != null)
+            {
+                Feedback? feedback = await db.feedbacks.FirstOrDefaultAsync(p => p.id == id);
+                if (feedback != null)
+                {
+                    db.feedbacks.Remove(feedback);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+            return NotFound();
         }
     }
 }
