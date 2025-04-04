@@ -20,15 +20,6 @@ namespace TehnokratProject.Areas.User.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
-
-
-
-
-
-
-
         public IActionResult Phone()
         {
             return View();
@@ -45,11 +36,6 @@ namespace TehnokratProject.Areas.User.Controllers
         }
 
         public IActionResult Tablet()
-        {
-            return View();
-        }
-
-        public IActionResult PC()
         {
             return View();
         }
