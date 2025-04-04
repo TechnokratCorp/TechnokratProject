@@ -40,7 +40,7 @@ namespace TehnokratProject.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("categorys");
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("TehnokratProject.Models.Feedback", b =>

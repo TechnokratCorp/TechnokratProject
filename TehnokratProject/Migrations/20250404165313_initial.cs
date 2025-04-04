@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TehnokratProject.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "categorys",
+                name: "categories",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace TehnokratProject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_categorys", x => x.id);
+                    table.PrimaryKey("PK_categories", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,9 +56,9 @@ namespace TehnokratProject.Migrations
                 {
                     table.PrimaryKey("PK_problems", x => x.id);
                     table.ForeignKey(
-                        name: "FK_problems_categorys_category_id",
+                        name: "FK_problems_categories_category_id",
                         column: x => x.category_id,
-                        principalTable: "categorys",
+                        principalTable: "categories",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -80,9 +80,9 @@ namespace TehnokratProject.Migrations
                 {
                     table.PrimaryKey("PK_products", x => x.id);
                     table.ForeignKey(
-                        name: "FK_products_categorys_category_id",
+                        name: "FK_products_categories_category_id",
                         column: x => x.category_id,
-                        principalTable: "categorys",
+                        principalTable: "categories",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -141,7 +141,7 @@ namespace TehnokratProject.Migrations
                 name: "problems");
 
             migrationBuilder.DropTable(
-                name: "categorys");
+                name: "categories");
         }
     }
 }

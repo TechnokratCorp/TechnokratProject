@@ -9,7 +9,6 @@ namespace TehnokratProject.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         ApplicationDbContext db;
-
         public CategoryController(ApplicationDbContext context)
         {
             db = context;

@@ -12,8 +12,8 @@ using TehnokratProject.Data;
 namespace TehnokratProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250308163320_Initial")]
-    partial class Initial
+    [Migration("20250404165313_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace TehnokratProject.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("categorys");
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("TehnokratProject.Models.Feedback", b =>
