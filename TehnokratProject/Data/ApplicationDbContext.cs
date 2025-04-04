@@ -7,7 +7,7 @@ namespace TehnokratProject.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Feedback> feedbacks { get; set; }
-        public DbSet<Category> categorys { get; set; }
+        public DbSet<Category> categories { get; set; }
         public DbSet<Problem> problems { get; set; }
         public DbSet<Solution> solutions { get; set; }
         public DbSet<Product> products { get; set; }
