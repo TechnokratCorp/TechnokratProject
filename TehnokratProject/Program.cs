@@ -41,7 +41,11 @@ namespace TehnokratProject
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{area=Admin}/{controller=Category}/{action=Index}/{id?}");
+
+            //app.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

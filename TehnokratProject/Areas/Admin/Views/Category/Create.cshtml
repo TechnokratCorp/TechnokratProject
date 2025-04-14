@@ -6,15 +6,12 @@
 <form asp-action="Create" asp-controller="Category">
     <p>
         <label asp-for="title">Назва</label><br />
-        <input type="text" asp-for="title" />
+        <input type="text" asp-for="title" required />
     </p>
     <p>
         <label asp-for="description">Опис</label><br />
-        <input type="text" asp-for="description" />
+        <textarea asp-for="description" required></textarea>
     </p>
-   @*  <p>
-        <textarea placeholder="Напишіть відгук тут" asp-for="text"></textarea>
-    </p> *@
     <p>
         <input type="submit" value="Створити" />
     </p>

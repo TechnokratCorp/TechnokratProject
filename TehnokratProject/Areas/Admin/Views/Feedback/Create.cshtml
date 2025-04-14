@@ -6,18 +6,18 @@
 <form asp-action="Create" asp-controller="Feedback">
     <p>
         <label asp-for="author_name">Ім'я</label><br />
-        <input type="text" asp-for="author_name" />
+        <input type="text" asp-for="author_name" required />
     </p>
     <p>
         <label asp-for="author_email">email</label><br />
-        <input type="text" asp-for="author_email" />
+        <input type="text" asp-for="author_email" required />
     </p>
     <p>
-        <textarea placeholder="Напишіть відгук тут" asp-for="text"></textarea>
+        <textarea placeholder="Напишіть відгук тут" asp-for="text" required></textarea>
     </p>
     <p>
-        <label asp-for="rating">Оцініть нас від 1 до 5</label><br />
-        <input type="number" asp-for="rating" />
+        <label asp-for="rating">Оцініть нас від 1 до 5 </label><br />
+        <input type="number" asp-for="rating" required />
     </p>
     <p>
         <input type="submit" value="Відправити відгук!" />

@@ -5,23 +5,23 @@
 <form asp-action="EditPost" asp-controller="Feedback">
     <p>
         <label asp-for="id">Id</label><br />
-        <input type="text" asp-for="id" />
+        <input type="text" asp-for="id" required />
     </p>
     <p>
         <label asp-for="author_name">Ім'я</label><br />
-        <input type="text" asp-for="author_name" />
+        <input type="text" asp-for="author_name" required />
     </p>
     <p>
         <label asp-for="author_email">email</label><br />
-        <input type="text" asp-for="author_email" />
+        <input type="text" asp-for="author_email" required />
     </p>
     <p>
         <label asp-for="text">Teкст</label><br />
-        <input type="text" asp-for="text" />
+        <input type="text" asp-for="text" required />
     </p>
     <p>
         <label asp-for="rating">Оцінка</label><br />
-        <input type="text" asp-for="rating" />
+        <input type="text" asp-for="rating" required />
     </p>
    
     <p>
