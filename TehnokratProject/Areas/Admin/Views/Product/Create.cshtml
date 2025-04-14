@@ -1,29 +1,47 @@
-﻿@model TehnokratProject.Models.Feedback
+﻿@model TehnokratProject.Models.ProductCreateViewModel
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2> Додати відгук </h2>
+<h2> Додати товар </h2>
 
-<form asp-action="Create" asp-controller="Feedback">
+@*  public string title { get; set; }
+        public int category_id { get; set; }
+        public string description { get; set; }
+        public int price { get; set; }
+        public bool status { get; set; }
+        public string image_path { get; set; } *@
+
+
+<form asp-action="Create" asp-controller="Product">
     <p>
-        <label asp-for="author_name">Ім'я</label><br />
-        <input type="text" asp-for="author_name" />
+        <label asp-for="title">Ім'я</label><br />
+        <input type="text" asp-for="title" />
     </p>
     <p>
-        <label asp-for="author_email">email</label><br />
-        <input type="text" asp-for="author_email" />
+        <label asp-for="description">Опис</label><br />
+        <textarea placeholder="Напишіть відгук тут" asp-for="description"></textarea>
     </p>
     <p>
-        <textarea placeholder="Напишіть відгук тут" asp-for="text"></textarea>
+        <label asp-for="price">Ціна</label><br />
+        <input type="number" asp-for="price" />
     </p>
-    <p>
+    @* <p>
         <label asp-for="rating">Оцініть нас від 1 до 5</label><br />
         <input type="number" asp-for="rating" />
-    </p>
+    </p> *@
+
+@*     <p>
+        <label asp-for="CategoryId">Category</label><br />
+        <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Title"))">
+            <option value="">-- Select Category --</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </p> *@
+
     <p>
-        <input type="submit" value="Відправити відгук!" />
+        <input type="submit" value="Додати товар" />
     </p>
 </form>
 
