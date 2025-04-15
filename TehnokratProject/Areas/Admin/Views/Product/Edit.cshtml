@@ -1,32 +1,29 @@
-﻿@model TehnokratProject.Models.Feedback
-@{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+﻿@model TehnokratProject.Models.Product
 
-<h2> Редагування даних відгуку </h2>
+<h2> Редагування даних товару </h2>
 
-<form asp-action="EditPost" asp-controller="Feedback">
+<form asp-action="EditPost" asp-controller="Product">
     <p>
         <label asp-for="id">Id</label><br />
         <input type="text" asp-for="id" />
     </p>
     <p>
-        <label asp-for="author_name">Ім'я</label><br />
-        <input type="text" asp-for="author_name" />
+        <label asp-for="title">Назва</label><br />
+        <input type="text" asp-for="title" />
     </p>
     <p>
-        <label asp-for="author_email">email</label><br />
-        <input type="text" asp-for="author_email" />
+        <label asp-for="description">Опис</label><br />
+        <input type="text" asp-for="description" />
     </p>
     <p>
-        <label asp-for="text">Teкст</label><br />
-        <input type="text" asp-for="text" />
+        <label asp-for="price">Ціна</label><br />
+        <input type="number" asp-for="price" />
     </p>
     <p>
-        <label asp-for="rating">Оцінка</label><br />
-        <input type="text" asp-for="rating" />
+        <label asp-for="status">Статус</label><br />
+        <input type="checkbox" asp-for="status" />
+        <span asp-validation-for="status" class="text-danger"></span>
     </p>
-   
     <p>
         <input type="submit" value="Зберегти" />
     </p>

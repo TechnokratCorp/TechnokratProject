@@ -1,12 +1,9 @@
 ﻿@using TehnokratProject.Models
-@{ 
-   Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
-}
 
-<h1>Список відгуків</h1>
+<h1>Список товарів</h1>
 <br>
 
-<a asp-controller="feedback" asp-action="create">Додати відгук</a>
+<a asp-controller="Product" asp-action="Create">Додати товар</a>
 
 <form method="get">
 </form>
@@ -17,41 +14,46 @@
             <a asp-action="Index">Id</a>
         </th>  
         <th>
-            <a asp-action="Index">Ім'я автора</a>
+            <a asp-action="Index">Назва</a>
         </th>
         <th>
-            <a asp-action="Index">Email автора</a>
+            <a asp-action="Index">Опис</a>
         </th>
         <th>
-            <a asp-action="Index">Текст</a>
+            <a asp-action="Index">Ціна</a>
         </th>
         <th>
-            <a asp-action="Index">Дата</a>
+            <a asp-action="Index">Статус</a>
         </th>
         <th>
-            <a asp-action="Index">Рейтинг</a>
+            <a asp-action="Index">Категорія</a>
         </th>
     </tr>
 
 
-    @foreach (var feedback in Model)
+    @foreach (var product in Model)
     {
         <tr>
-            <td>@feedback.id</td>
-            <td>@feedback.author_name</td>
-            <td>@feedback.author_email</td>
-            <td>@feedback.text</td>
-            <td>@feedback.date</td>
-            <td>@feedback.rating</td>
+            <td>@product.id</td>
+            <td>@product.title</td>
+            <td>@product.description</td>
+            <td>@product.price</td>
+            @if (product.status == true){
+                 <td>В наявності</td>
+            }
+            else{
+                <td>Немає в наявності</td>
+            }
+            <td>@product.category?.title</td>
 
             <td>
-                <form asp-controller="Feedback" asp-action="Edit" asp-route-id="@feedback.id">
+                <form asp-controller="Product" asp-action="Edit" asp-route-id="@product.id">
                     <input type="submit" value="Редагувати"></input>
                 </form>
 
             </td>
             <td>
-                <form asp-controller="Feedback" asp-action="Delete" asp-route-id="@feedback.id">
+                <form asp-controller="Product" asp-action="Delete" asp-route-id="@product.id">
                     <input type="submit" value="Видалити"></input>
                 </form>
             </td>

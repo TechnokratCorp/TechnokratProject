@@ -20,7 +20,7 @@ namespace TehnokratProject.Areas.Admin.Controllers
             return View(products);
         }
 
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             var categories = await db.categories.ToListAsync();
             var viewModel = new ProductCreateViewModel
@@ -31,10 +31,17 @@ namespace TehnokratProject.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create(ProductCreateViewModel model)
         {
-            product.status = true;
-            product.image_path = "";
+            var product = new Product
+            {
+                title = model.title,
+                description = model.description,
+                status = true,
+                image_path = "",
+                category_id = model.category_id.Value,
+                price = model.price
+            };
             db.products.Add(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -43,6 +50,7 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPost(Product product)
         {
+            product.image_path = "";
             db.products.Update(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
