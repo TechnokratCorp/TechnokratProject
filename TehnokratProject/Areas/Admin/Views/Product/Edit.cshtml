@@ -16,6 +16,10 @@
         <input type="text" asp-for="description" />
     </p>
     <p>
+        <label asp-for="quantity">Кількість</label><br />
+        <input type="number" asp-for="quantity" />
+    </p>
+    <p>
         <label asp-for="price">Ціна</label><br />
         <input type="number" asp-for="price" />
     </p>
@@ -27,7 +31,6 @@
     <p>
         <input type="submit" value="Зберегти" />
     </p>
-
 </form>
 
 <form asp-action="index" asp-controller="clients">

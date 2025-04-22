@@ -20,6 +20,9 @@
             <a asp-action="Index">Опис</a>
         </th>
         <th>
+            <a asp-action="Index">Кількість</a>
+        </th>
+        <th>
             <a asp-action="Index">Ціна</a>
         </th>
         <th>
@@ -37,12 +40,20 @@
             <td>@product.id</td>
             <td>@product.title</td>
             <td>@product.description</td>
-            <td>@product.price</td>
-            @if (product.status == true){
-                 <td>В наявності</td>
+            
+            @if (product.quantity == 0)
+            {
+                <td>Немає в наявності</td>
             }
             else{
-                <td>Немає в наявності</td>
+                <td>@product.quantity</td>
+            }
+            <td>@product.price</td>
+            @if (product.status == true){
+                 <td>Активне</td>
+            }
+            else{
+                <td>Неактивне</td>
             }
             <td>@product.category?.title</td>
 

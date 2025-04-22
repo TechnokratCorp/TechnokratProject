@@ -17,7 +17,9 @@ namespace TehnokratProject.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Product> products = await db.products.ToListAsync();
+            var products = await db.products
+                .Include(p => p.category)
+                .ToListAsync();
             return View(products);
         }
 
@@ -39,8 +41,11 @@ namespace TehnokratProject.Areas.Admin.Controllers
                 title = model.title,
                 description = model.description,
                 status = true,
+                quantity = 0,
                 image_path = "",
                 category_id = model.category_id.Value,
+                category = db.categories.FirstOrDefault(p => p.id == model.category_id),
+                
                 price = model.price
             };
             db.products.Add(product);
@@ -57,9 +62,11 @@ namespace TehnokratProject.Areas.Admin.Controllers
             existing_product.image_path = "";
             existing_product.title = product.title;
             existing_product.description = product.description;
+            existing_product.price = product.price;
+            existing_product.quantity = product.quantity;
             existing_product.status = product.status;
             existing_product.image_path = "";
-            existing_product.price = product.price;
+            
             db.products.Update(existing_product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
