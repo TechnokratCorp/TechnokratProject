@@ -7,14 +7,6 @@ namespace TehnokratProject.Areas.User.Controllers
     [Area("User")]
     public class HomeController : Controller
     {
-
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Phone()
         {
             return View();
@@ -25,19 +17,22 @@ namespace TehnokratProject.Areas.User.Controllers
             return View();
         }
 
+        public IActionResult Printer()
+        {
+            return View();
+        }
+
         public IActionResult TV()
         {
             return View();
         }
+        ///
 
         public IActionResult Tablet()
         {
             return View();
         }
-        public IActionResult Printer()
-        {
-            return View();
-        }
+        
         public IActionResult Contacts()
         {
             return View();
@@ -47,5 +42,24 @@ namespace TehnokratProject.Areas.User.Controllers
         {
             return View();
         }
+        public IActionResult Services() // оняксцх
+        {
+            return View();
+        }
+
+        public IActionResult about() // оняксцх
+        {
+            return View();
+        }
+
+        //public IActionResult Services() // оняксцх
+        //{
+        //    return View();
+        //}
+
+        //public IActionResult Services() // оняксцх
+        //{
+        //    return View();
+        //}
     }
 }

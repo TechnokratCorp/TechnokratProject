@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TehnokratProject.Areas.Admin.ViewModels;
@@ -8,6 +9,7 @@ using TehnokratProject.Models;
 namespace TehnokratProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ProductController : Controller
     {
         ApplicationDbContext db;

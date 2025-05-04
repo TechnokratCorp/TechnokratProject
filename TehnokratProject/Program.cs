@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using TehnokratProject.Data;
 
 namespace TehnokratProject
@@ -14,7 +15,13 @@ namespace TehnokratProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddAuthentication("MyCookieAuth")
+                .AddCookie("MyCookieAuth", options =>
+                {
+                    options.LoginPath = "/Admin/Account/Login";
+                });
 
+            builder.Services.AddAuthorization();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,7 +36,7 @@ namespace TehnokratProject
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -41,7 +48,7 @@ namespace TehnokratProject
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{area=Admin}/{controller=Category}/{action=Index}/{id?}");
+                pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
 
             //app.MapControllerRoute(
             //    name: "default",

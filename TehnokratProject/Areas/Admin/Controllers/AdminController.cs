@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TehnokratProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class AdminController : Controller
     {
         // CRUD - create, read, update, delete
@@ -15,7 +17,5 @@ namespace TehnokratProject.Areas.Admin.Controllers
         {
             return View();
         }
-
-      
     }
 }

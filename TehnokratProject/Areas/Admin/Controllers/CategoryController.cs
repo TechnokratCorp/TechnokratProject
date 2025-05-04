@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TehnokratProject.Data;
 using TehnokratProject.Models;
@@ -6,6 +7,7 @@ using TehnokratProject.Models;
 namespace TehnokratProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CategoryController : Controller
     {
         ApplicationDbContext db;
