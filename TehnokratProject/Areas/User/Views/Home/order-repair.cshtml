@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Замовити ремонт</title>
+    <link
+      href="https://cdn.jsdelivr.net/combine/npm/daisyui@5/base/reset.css,npm/daisyui@5/base/svg.css,npm/daisyui@5/base/properties.css,npm/daisyui@5/base/rootscrollgutter.css,npm/daisyui@5/base/scrollbar.css,npm/daisyui@5/base/rootscrolllock.css,npm/daisyui@5/components/button.css,npm/daisyui@5/components/modal.css,npm/daisyui@5/theme/light.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/css/order-repair.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/imgs/favicon.ico" />
+  </head>
+  <body>
+    <!-- Mobile Header -->
+    <header class="new_header mobile-only">
+      <div class="new_header__second_row">
+        <a href="/">
+          <img src="/assets/imgs/logo.svg" alt="Logo" />
+        </a>
+        <div class="new_header__second_row__mobile_group">
+          <label for="order-consultation-modal" class="phone-icon-mobile">
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 13C18.5 13 20.5 17.5 20.5 18C20.5 19 19 20 18.5 21C18 22 19 23 20 24C20.39 24.39 22 26 23 25.5C24 25 25 23.5 26 23.5C26.5 23.5 31 25.5 31 26C31 28 29.5 29.5 28 30C26.5 30.5 25.5 30.5 23.5 30C21.5 29.5 20 29 17.5 26.5C15 24 14.5 22.5 14 20.5C13.5 18.5 13.5 17.5 14 16C14.5 14.5 16 13 18 13Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </label>
+          <div class="new_header__second_row__mobile_group__menu_button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.125 7.125H19.875M4.125 12H19.875M4.125 16.875H19.875"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-header desktop-only">
+      <div class="container">
+        <div class="desktop-header__top">
+          <div class="desktop-header__contact-info">
+            <div class="desktop-header__phone-numbers">
+              <img src="/assets/imgs/phone.svg" alt="Phone" loading="lazy" />
+              <a>067-872-44-64 (Viber)</a>
+              <a>066-200-77-84</a>
+            </div>
+            <div class="desktop-header__location">
+              <img src="/assets/imgs/geo.svg" alt="Location" loading="lazy" />
+              <span>м. Бровари, вул. Незалежності, 2, СЦ «Технократ»</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="desktop-header__main">
+          <a href="/" class="desktop-header__logo">
+            <img src="/assets/imgs/logo.svg" alt="Технократ" />
+          </a>
+
+          <nav class="desktop-header__nav">
+            <ul class="desktop-header__nav-list">
+              <li><a href="/services">Послуги</a></li>
+              <li><a href="/itrade">Товари</a></li>
+              <li><a href="/about">Про нас</a></li>
+              <li><a href="/contacts">Контакти</a></li>
+            </ul>
+          </nav>
+
+          <label for="order-product-modal" class="desktop-header__order-btn"
+            >Замовити ремонт</label
+          >
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenu" style="display: none">
+      <div class="mobile-menu__header">
+        <img src="/assets/imgs/logo.svg" alt="Logo" class="mobile-menu__logo" />
+        <button
+          class="mobile-menu__close"
+          id="closeMobileMenu"
+          aria-label="Закрити меню"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9998 13.3998L7.0998 18.2998C6.91647 18.4831 6.68314 18.5748 6.3998 18.5748C6.11647 18.5748 5.88314 18.4831 5.6998 18.2998C5.51647 18.1165 5.4248 17.8831 5.4248 17.5998C5.4248 17.3165 5.51647 17.0831 5.6998 16.8998L10.5998 11.9998L5.6998 7.0998C5.51647 6.91647 5.4248 6.68314 5.4248 6.3998C5.4248 6.11647 5.51647 5.88314 5.6998 5.6998C5.88314 5.51647 6.11647 5.4248 6.3998 5.4248C6.68314 5.4248 6.91647 5.51647 7.0998 5.6998L11.9998 10.5998L16.8998 5.6998C17.0831 5.51647 17.3165 5.4248 17.5998 5.4248C17.8831 5.4248 18.1165 5.51647 18.2998 5.6998C18.4831 5.88314 18.5748 6.11647 18.5748 6.3998C18.5748 6.68314 18.4831 6.91647 18.2998 7.0998L13.3998 11.9998L18.2998 16.8998C18.4831 17.0831 18.5748 17.3165 18.5748 17.5998C18.5748 17.8831 18.4831 18.1165 18.2998 18.2998C18.1165 18.4831 17.8831 18.5748 17.5998 18.5748C17.3165 18.5748 17.0831 18.4831 16.8998 18.2998L11.9998 13.3998Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-menu__nav">
+        <ul>
+          <li><a href="/services">Послуги</a></li>
+          <li><a href="/itrade">Товари</a></li>
+          <li><a href="/about">Про нас</a></li>
+          <li><a href="/contacts">Контакти</a></li>
+        </ul>
+        <label for="order-product-modal" class="mobile-menu__order-btn"
+          >Замовити ремонт</label
+        >
+      </nav>
+      <div class="mobile-menu__footer">
+        <div class="mobile-menu__phones">
+          <img src="/assets/imgs/phone.svg" alt="Phone" />
+          <span>067-872-44-64 (Viber),</span>
+          <span>066-200-77-84</span>
+        </div>
+        <div class="mobile-menu__location">
+          <span>м. Бровари, вул. Незалежності, 2, СЦ «Технократ»</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="container">
+        <h1 class="page-title">Замовте ремонт</h1>
+
+        <p class="paragraph_2 font-bold mx-auto text-center">
+          🔧 Заповніть форму, щоб залишити заявку на ремонт вашої техніки.
+        </p>
+
+        <div class="form-container">
+          <form class="form">
+            <div class="grid">
+              <label class="label"
+                >Ім'я<input type="text" class="input"
+              /></label>
+              <label class="label"
+                >Прізвище<input type="text" class="input"
+              /></label>
+            </div>
+            <div class="grid">
+              <label class="label"
+                >Email<input type="text" class="input"
+              /></label>
+              <label class="label"
+                >Номер Телефону<input type="tel" class="input"
+              /></label>
+            </div>
+
+            <label class="label">
+              Оберіть виробника
+              <select class="select">
+                <option value="" disabled selected>
+                  --- Оберіть Варіант ---
+                </option>
+                <option value="apple">Apple</option>
+                <option value="samsung">Samsung</option>
+                <option value="xiaomi">Xiaomi</option>
+                <option value="huawei">Huawei</option>
+                <option value="other">Інший</option>
+              </select>
+            </label>
+
+            <div class="grid">
+              <label class="label"
+                >Модель пристрою
+                <select class="select">
+                  <option value="" disabled selected>
+                    --- Оберіть Варіант ---
+                  </option>
+                  <option value="apple">iPhone 14 Pro Max</option>
+                  <option value="apple">iPhone 14 Pro</option>
+                  <option value="apple">iPhone 14</option>
+                  <option value="apple">iPhone 13 Pro Max</option>
+                  <option value="apple">iPhone 13 Pro</option>
+                  <option value="apple">iPhone 13</option>
+                  <option value="apple">iPhone 12 Pro Max</option>
+                </select>
+              </label>
+              <label class="label"
+                >Серійний номер<input type="text" class="input"
+              /></label>
+            </div>
+            <label class="label"
+              >Тип ремонту
+              <select class="select">
+                <option value="" disabled selected>
+                  --- Оберіть Варіант ---
+                </option>
+                <option value="">Ремонт дисплею</option>
+                <option value="">Ремонт корпусу</option>
+                <option value="">Ремонт акумулятора</option>
+                <option value="">Ремонт динаміків</option>
+                <option value="">Ремонт кнопок</option>
+                <option value="">Ремонт камери</option>
+                <option value="">Інший</option>
+              </select>
+            </label>
+            <label for="file-upload" class="file-upload">
+              Завантажити файл (до 25МБ):
+              <div class="file-upload__container">
+                <img src="/assets/imgs/upload.svg" alt="Upload" />
+                <label for="file-upload" class="secondary_button">
+                  Оберіть файл
+                </label>
+              </div>
+              <input type="file" id="file-upload" class="file-upload__input" />
+            </label>
+
+            <label class="label">
+              Опишіть несправність
+              <textarea class="textarea"></textarea>
+            </label>
+
+            <label class="label"
+              >Паролі на пристрої<input type="text" class="input"
+            /></label>
+
+            <label class="label"
+              >Доставка після ремонту
+              <select class="select">
+                <option value="" disabled selected>
+                  --- Оберіть Варіант ---
+                </option>
+                <option value="">Доставка додому</option>
+                <option value="">Самовивіз</option>
+                <option value="">Інший</option>
+              </select>
+            </label>
+            <button class="primary_button">Відправити заявку</button>
+          </form>
+
+          <div class="alert">
+            <img src="/assets/imgs/alert.svg" alt="Alert" />
+            <p class="paragraph_3">
+              Функція попередньої реєстрації ремонту призначена виключно для
+              реєстрації несправного пристрою, перед візитом до служби підтримки
+              користувачів або при відправці Новою Поштою. <br /><br />❓
+              <span class="font-bold">Якщо у вас виникли запитання</span> —
+              скористайтеся онлайн-чатом, перейдіть на Cторінку контактів або
+              зателефонуйте нам: 066-200-77-84.
+              <span class="font-bold">Ми завжди на зв’язку!</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__logos">
+          <img
+            src="/assets/imgs/sunrise_logo.webp"
+            alt="Sunrise Logo"
+            class="footer__sunrise-logo"
+            loading="lazy"
+          />
+          <img
+            src="/assets/imgs/logo.svg"
+            alt="Logo"
+            class="footer__main-logo"
+            loading="lazy"
+          />
+        </div>
+        <div class="footer__section">
+          <div class="footer__section-title">Інформація</div>
+          <div class="footer__section-link">
+            <a href="/about">Про нас</a>
+          </div>
+          <div class="footer__section-link">
+            <a href="/services">Ціни на послуги</a>
+          </div>
+          <div class="footer__section-link">
+            <label for="order-consultation-modal"
+              ><a href="#">Консультація</a></label
+            >
+          </div>
+        </div>
+        <div class="footer__section">
+          <div class="footer__section-title">Послуги</div>
+          <div class="footer__section-link">
+            <a href="/repair">Ремонт телефонів</a>
+          </div>
+          <div class="footer__section-link"><a href="/itrade">Ноутбуки</a></div>
+          <div class="footer__section-link"><a href="/itrade">Інше</a></div>
+        </div>
+        <div class="footer__section">
+          <div class="footer__section-title">Контакти</div>
+          <div class="footer__contact-row">
+            <span
+              ><b>м. Бровари,</b><br />вул. Незалежності, 2, СЦ
+              «Технократ»</span
+            >
+          </div>
+          <div class="footer__contact-row">
+            <img src="/assets/imgs/clock.svg" alt="Clock" loading="lazy" />
+            <span>ПН-ПТ: 10:00–18:00</span>
+          </div>
+          <div class="footer__contact-row">
+            <img src="/assets/imgs/phone.svg" alt="Phone" loading="lazy" />
+            <span>067-872-44-64 (Viber)<br />066-200-77-84</span>
+          </div>
+        </div>
+        <div class="footer__privacy">
+          <div class="footer__copyright">
+            Copyright © 2025 Технократ. Усі права захищені
+          </div>
+          <div class="footer__privacy-links">
+            <a href="#">Privacy & Policy</a>
+            <a href="#">Terms & Condition</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+    <input type="checkbox" id="order-product-modal" class="modal-toggle" />
+    <div class="modal" role="dialog">
+      <div class="modal-box">
+        <form class="form-modal">
+          <label for="order-product-modal" class="modal-close"
+            ><svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.0002 20.1L10.6502 27.45C10.3752 27.725 10.0252 27.8625 9.6002 27.8625C9.1752 27.8625 8.82519 27.725 8.55019 27.45C8.27519 27.175 8.1377 26.825 8.1377 26.4C8.1377 25.975 8.27519 25.625 8.55019 25.35L15.9002 18L8.55019 10.65C8.27519 10.375 8.1377 10.025 8.1377 9.6C8.1377 9.175 8.27519 8.825 8.55019 8.55C8.82519 8.275 9.1752 8.1375 9.6002 8.1375C10.0252 8.1375 10.3752 8.275 10.6502 8.55L18.0002 15.9L25.3502 8.55C25.6252 8.275 25.9752 8.1375 26.4002 8.1375C26.8252 8.1375 27.1752 8.275 27.4502 8.55C27.7252 8.825 27.8627 9.175 27.8627 9.6C27.8627 10.025 27.7252 10.375 27.4502 10.65L20.1002 18L27.4502 25.35C27.7252 25.625 27.8627 25.975 27.8627 26.4C27.8627 26.825 27.7252 27.175 27.4502 27.45C27.1752 27.725 26.8252 27.8625 26.4002 27.8625C25.9752 27.8625 25.6252 27.725 25.3502 27.45L18.0002 20.1Z"
+                fill="black"
+              />
+            </svg>
+          </label>
+          <h3 class="title">Замовити товар легко!</h3>
+          <p class="desc">
+            Заповніть форму, і ми швидко зв'яжемося з вами для підтвердження
+            замовлення
+          </p>
+          <label class="label">Ім'я<input type="text" class="input" /></label>
+
+          <label class="label">Телефон<input type="tel" class="input" /></label>
+
+          <label class="label">
+            Коментар до замовлення
+            <textarea class="textarea"></textarea>
+          </label>
+
+          <button class="primary_button">Замовити товар</button>
+        </form>
+      </div>
+      <label class="modal-backdrop" for="order-product-modal">Close</label>
+    </div>
+
+    <input type="checkbox" id="order-consultation-modal" class="modal-toggle" />
+    <div class="modal" role="dialog">
+      <div class="modal-box">
+        <form class="form-modal">
+          <label for="order-consultation-modal" class="modal-close"
+            ><svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.0002 20.1L10.6502 27.45C10.3752 27.725 10.0252 27.8625 9.6002 27.8625C9.1752 27.8625 8.82519 27.725 8.55019 27.45C8.27519 27.175 8.1377 26.825 8.1377 26.4C8.1377 25.975 8.27519 25.625 8.55019 25.35L15.9002 18L8.55019 10.65C8.27519 10.375 8.1377 10.025 8.1377 9.6C8.1377 9.175 8.27519 8.825 8.55019 8.55C8.82519 8.275 9.1752 8.1375 9.6002 8.1375C10.0252 8.1375 10.3752 8.275 10.6502 8.55L18.0002 15.9L25.3502 8.55C25.6252 8.275 25.9752 8.1375 26.4002 8.1375C26.8252 8.1375 27.1752 8.275 27.4502 8.55C27.7252 8.825 27.8627 9.175 27.8627 9.6C27.8627 10.025 27.7252 10.375 27.4502 10.65L20.1002 18L27.4502 25.35C27.7252 25.625 27.8627 25.975 27.8627 26.4C27.8627 26.825 27.7252 27.175 27.4502 27.45C27.1752 27.725 26.8252 27.8625 26.4002 27.8625C25.9752 27.8625 25.6252 27.725 25.3502 27.45L18.0002 20.1Z"
+                fill="black"
+              />
+            </svg>
+          </label>
+          <h3 class="title">Отримати консультацію</h3>
+          <p class="desc">
+            Залиште свої контакти, і наш спеціаліст зв'яжеться з вами найближчим
+            часом
+          </p>
+          <label class="label">Ім'я<input type="text" class="input" /></label>
+
+          <label class="label">Телефон<input type="tel" class="input" /></label>
+
+          <label class="label">
+            Коментар до замовлення
+            <textarea class="textarea"></textarea>
+          </label>
+
+          <button class="primary_button">Отримати консультацію</button>
+        </form>
+      </div>
+      <label class="modal-backdrop" for="order-consultation-modal">Close</label>
+    </div>
+
+    <input type="checkbox" id="order-repair-modal" class="modal-toggle" />
+    <div class="modal" role="dialog">
+      <div class="modal-box">
+        <form class="form-modal">
+          <label for="order-repair-modal" class="modal-close"
+            ><svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.0002 20.1L10.6502 27.45C10.3752 27.725 10.0252 27.8625 9.6002 27.8625C9.1752 27.8625 8.82519 27.725 8.55019 27.45C8.27519 27.175 8.1377 26.825 8.1377 26.4C8.1377 25.975 8.27519 25.625 8.55019 25.35L15.9002 18L8.55019 10.65C8.27519 10.375 8.1377 10.025 8.1377 9.6C8.1377 9.175 8.27519 8.825 8.55019 8.55C8.82519 8.275 9.1752 8.1375 9.6002 8.1375C10.0252 8.1375 10.3752 8.275 10.6502 8.55L18.0002 15.9L25.3502 8.55C25.6252 8.275 25.9752 8.1375 26.4002 8.1375C26.8252 8.1375 27.1752 8.275 27.4502 8.55C27.7252 8.825 27.8627 9.175 27.8627 9.6C27.8627 10.025 27.7252 10.375 27.4502 10.65L20.1002 18L27.4502 25.35C27.7252 25.625 27.8627 25.975 27.8627 26.4C27.8627 26.825 27.7252 27.175 27.4502 27.45C27.1752 27.725 26.8252 27.8625 26.4002 27.8625C25.9752 27.8625 25.6252 27.725 25.3502 27.45L18.0002 20.1Z"
+                fill="black"
+              />
+            </svg>
+          </label>
+          <h3 class="title">Замовити ремонт</h3>
+          <p class="desc">
+            Заповніть форму, і ми швидко зв'яжемося з вами для підтвердження
+            замовлення
+          </p>
+          <label class="label">Ім'я<input type="text" class="input" /></label>
+
+          <label class="label">Телефон<input type="tel" class="input" /></label>
+
+          <label class="label">
+            Коментар до замовлення
+            <textarea class="textarea"></textarea>
+          </label>
+
+          <button class="primary_button">Отримати консультацію</button>
+        </form>
+      </div>
+      <label class="modal-backdrop" for="order-repair-modal">Close</label>
+    </div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>

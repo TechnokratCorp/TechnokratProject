@@ -1,0 +1,181 @@
+@import "../../components/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 18px;
+  background-color: $color-bg-light;
+
+  button {
+    margin-top: 12px;
+  }
+}
+
+.form-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 18px;
+  background-color: $color-bg-light;
+  padding-top: $spacing-xl;
+  margin: 0 auto;
+  position: relative;
+
+  button {
+    margin-top: 12px;
+  }
+
+  .primary_button {
+    &:hover {
+      background-color: $color-bg-medium;
+    }
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .desc {
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .form {
+    order: 2;
+    box-sizing: border-box;
+    padding: $spacing-md;
+    border-radius: 20px;
+    max-width: 1096px;
+    margin: 0 auto;
+  }
+
+  .form-modal {
+    padding: $spacing-lg $spacing-xl;
+
+    .modal-close {
+      top: $spacing-md;
+      right: $spacing-md;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+  gap: 18px;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px $spacing-xl;
+  }
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  background: $color-bg-medium;
+  border-radius: 20px;
+  height: 48px;
+  border: none;
+  padding: 0 $spacing-sm;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.select {
+  background: $color-bg-medium;
+  border-radius: 20px;
+  height: 48px;
+  border: none;
+  padding: 0 $spacing-sm;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  option {
+    max-width: 300px;
+  }
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-bg-medium;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    padding: $spacing-lg 0 $spacing-md 0;
+
+    label {
+      background-color: $color-bg-dark;
+      color: $color-bg-light;
+      border: none;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .file-upload {
+    &__container {
+      max-width: 500px;
+      margin: 0 auto;
+
+      label:hover {
+        background-color: $color-primary;
+        color: $color-bg-dark;
+      }
+    }
+  }
+}
+
+.textarea {
+  background: $color-bg-medium;
+  border-radius: 20px;
+  height: 180px;
+  border: none;
+  padding: $spacing-sm $spacing-sm;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+  outline: none;
+}

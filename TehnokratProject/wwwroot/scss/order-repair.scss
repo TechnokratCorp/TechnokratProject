@@ -1,0 +1,31 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+@import "components/page-title";
+@import "components/breadcrumbs";
+
+@import "sections/order-repair/form";
+@import "sections/order-repair/alert";
+@import "sections/order-repair/form";
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-bg-light;
+  box-sizing: border-box;
+  padding: 24px 12px;
+  margin: 36px 12px;
+  border-radius: 20px;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .form-container {
+    background-color: $color-bg-medium;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xxl;
+  }
+}

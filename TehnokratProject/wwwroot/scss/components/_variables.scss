@@ -1,0 +1,47 @@
+$color-text: #272530;
+$color-primary: #ffd33b;
+$color-bg-light: #ffffff;
+$color-bg-medium: #f4f4f4;
+$color-bg-dark: #272530;
+
+$font-family: "Poppins", "Segoe UI", -apple-system, BlinkMacSystemFont,
+  "Helvetica Neue", Arial, sans-serif;
+
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-large-desktop: 1200px;
+
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+$spacing-xxl: 64px;
+$spacing-xxxl: 80px;
+$spacing-xxxxl: 120px;
+
+$container-max-width: 1340px;
+
+$border-radius-sm: 8px;
+$border-radius-md: 20px;
+$border-radius-lg: 32px;
+$border-radius-xl: 60px;
+
+@media (min-width: $bp-tablet) and (max-width: ($bp-desktop - 1px)) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: $bp-desktop) and (max-width: ($bp-large-desktop - 1px)) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .sections {
+    margin-top: 30px;
+  }
+}

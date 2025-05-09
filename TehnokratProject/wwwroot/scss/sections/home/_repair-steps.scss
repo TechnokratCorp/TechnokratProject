@@ -1,0 +1,129 @@
+@import "../../components/variables";
+
+.repair-steps {
+  padding: 30px 0;
+  position: relative;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      font-size: 24px;
+      font-weight: 700;
+      padding: 0 20px;
+      height: 52px;
+      color: $color-bg-light;
+      background: $color-text;
+      border-radius: 62px;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__devices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: $container-max-width;
+    margin: 50px auto 0 auto;
+    background-color: $color-primary;
+    width: 100%;
+    overflow-x: hidden;
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      color: $color-text;
+      max-width: 383px;
+      text-align: center;
+      margin-top: 48px;
+      margin-bottom: 8px;
+    }
+
+    &__device-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $spacing-sm;
+      overflow-x: auto;
+      width: 100%;
+      padding-bottom: 24px;
+      padding-inline: $spacing-sm;
+      box-sizing: border-box;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &__item {
+        flex: 0 0 auto;
+        background-color: $color-bg-light;
+        border-radius: 24px;
+        width: 180px;
+        font-size: 16px;
+        font-weight: 500;
+        height: 224px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .repair-steps {
+    &__arrow {
+      top: 102px;
+    }
+    &__title {
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        padding: 10px 20px;
+        font-size: 36px;
+        height: auto;
+      }
+    }
+
+    &__devices {
+      border-radius: 24px;
+
+      p {
+        font-size: 24px;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      &__device-list {
+        justify-content: center;
+        gap: 50px;
+        padding: 0 30px 30px;
+        overflow-x: visible;
+
+        &__item {
+          width: 211px;
+          height: 224px;
+          font-size: 24px;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+@import "components/page-title";
+@import "components/breadcrumbs";
+
+@import "sections/order-repair/form";
+
+@import "contacts";
+@import "sections/home/hero";
+@import "sections/home/reviews";
+
+.page {
+  padding: 0;
+  padding-bottom: $spacing-xxl;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .page {
+    padding: 0;
+    padding-bottom: $spacing-xxl;
+  }
+}
+
+.reviews-section {
+  padding: $spacing-lg $spacing-sm;
+}
+
+.title_2 {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: $spacing-lg;
+}
+
+.page-title {
+  max-width: 1319px;
+  margin-bottom: $spacing-xxl;
+  color: $color-bg-light;
+  display: block;
+  font-size: 40px;
+}
+
+.page-title-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/imgs/about.webp");
+  background-size: cover;
+  background-position: center;
+  padding: $spacing-xxxxl $spacing-sm;
+  color: $color-bg-light;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hero__second_row {
+  margin: 0 auto $spacing-lg;
+  gap: 0;
+}
+
+@media (min-width: $bp-large-desktop) {
+  iframe {
+    grid-column: span 1 / span 1;
+  }
+
+  .hero__second_row {
+    margin: 0 auto $spacing-xxxl;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews-section {
+    padding: $spacing-lg $spacing-sm $spacing-xxl $spacing-sm;
+  }
+
+  .title_2 {
+    font-size: 48px;
+  }
+
+  .page-title {
+    font-size: 82px;
+  }
+}

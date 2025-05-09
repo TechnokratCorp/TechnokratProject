@@ -1,0 +1,116 @@
+@import "../../components/variables";
+
+.repair-content {
+  width: 100%;
+  background-color: $color-bg-light;
+  padding-bottom: $spacing-xl;
+  &__image-container {
+    padding-top: $spacing-md;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+
+    img {
+      max-width: 80%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+
+  &__text-container {
+    text-align: center;
+    padding: 0 $spacing-md;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__description {
+    color: $color-text;
+    opacity: 0.9;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto $spacing-lg auto;
+    line-height: 1.4;
+    text-align: left;
+    display: inline-block;
+    max-width: 100%;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: $spacing-sm;
+
+      svg {
+        flex-shrink: 0;
+        margin-right: $spacing-xs;
+        margin-top: 4px;
+        path {
+          stroke: #28a745;
+        }
+      }
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__button {
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .repair-content {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background-color: $color-bg-light;
+    padding: $spacing-xl 0;
+    border-radius: 0 20px 0 0;
+
+    &__image-container {
+      max-width: 600px;
+      padding-top: 0;
+
+      img {
+        position: relative;
+        object-fit: cover;
+        max-width: 100%;
+      }
+    }
+
+    &__text-container {
+      flex: 1;
+      text-align: left;
+    }
+
+    &__title {
+      margin-bottom: $spacing-md;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    &__description {
+      margin-bottom: $spacing-md;
+      font-size: 20px;
+    }
+
+    &__features {
+      text-align: left;
+      display: block;
+      margin: 0 0 $spacing-xl 0;
+      font-size: 20px;
+    }
+
+    &__button {
+      margin: 0;
+      max-width: 250px;
+    }
+  }
+}

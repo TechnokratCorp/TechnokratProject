@@ -1,0 +1,42 @@
+@import "variables";
+
+.page-title {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 30px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 139px;
+    height: 8px;
+    background-color: $color-primary;
+    border-radius: 3px;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .page-title {
+    margin-bottom: $spacing-xl;
+    padding-bottom: 0;
+    font-size: 82px;
+    letter-spacing: 2px;
+
+    &::after {
+      bottom: -24px;
+      height: 16px;
+      border-radius: 37px;
+    }
+  }
+}

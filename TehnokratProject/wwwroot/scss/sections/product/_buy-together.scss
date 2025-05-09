@@ -1,0 +1,32 @@
+@import "../../components/variables";
+
+.buy-together {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-xl;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .buy-together {
+    .title {
+      text-align: left;
+    }
+  }
+
+  .products-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

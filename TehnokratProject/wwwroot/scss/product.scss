@@ -1,0 +1,36 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+@import "components/page-title";
+@import "components/breadcrumbs";
+
+@import "sections/product/tabs";
+@import "sections/product/product-hero";
+@import "sections/product/info-table";
+@import "sections/product/buy-together";
+@import "sections/itrade/product-card";
+@import "sections/order-repair/form";
+
+.page {
+  .container {
+    padding: 0 $spacing-sm;
+    box-sizing: border-box;
+    gap: $spacing-lg;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .page {
+    .container {
+      gap: $spacing-xl;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  .breadcrumbs {
+    margin: 0;
+  }
+}

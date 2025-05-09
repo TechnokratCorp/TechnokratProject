@@ -1,0 +1,29 @@
+@import "variables";
+
+.breadcrumbs {
+  display: flex;
+  gap: 16px;
+  margin: 0 auto $spacing-sm auto;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  span {
+    opacity: 1;
+    color: $color-text;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .breadcrumbs {
+    font-size: 18px;
+    margin: 0 auto 0 auto;
+  }
+}

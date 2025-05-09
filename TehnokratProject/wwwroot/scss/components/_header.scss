@@ -1,0 +1,163 @@
+@import "variables";
+
+.new_header {
+  padding: $spacing-sm;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+
+  &__first_row {
+    display: none;
+  }
+
+  &__second_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    img {
+      width: 167px;
+      height: 44px;
+    }
+
+    &__mobile_group {
+      display: flex;
+      flex-direction: row;
+
+      &__menu_button {
+        background: $color-primary;
+        border: none;
+        border-radius: $border-radius-sm;
+        padding: 10px;
+        max-height: 44px;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+
+        &:hover {
+          background-color: $color-bg-light;
+          color: $color-text;
+        }
+      }
+    }
+  }
+}
+
+.desktop-header {
+  padding: 15px 0;
+  width: 100%;
+
+  &__top {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &__contact-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__phone-numbers,
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: $color-text;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
+    a {
+      color: $color-text;
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-right: 10px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    img {
+      width: 180px;
+      height: auto;
+    }
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+
+      li a {
+        font-size: 18px;
+        color: $color-text;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__order-btn {
+    background-color: $color-primary;
+    color: $color-text;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-bg-light;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: $bp-large-desktop) {
+    &__contact-info {
+      gap: 40px;
+    }
+
+    &__nav {
+      &-list {
+        gap: 50px;
+      }
+    }
+  }
+}
+
+.phone-icon-mobile {
+  display: flex;
+  margin-right: 15px;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .new_header {
+    display: none;
+  }
+}

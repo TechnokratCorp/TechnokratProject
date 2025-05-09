@@ -1,0 +1,101 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+@import "components/page-title";
+
+@import "sections/itrade/product-card";
+@import "sections/itrade/pagination";
+@import "sections/itrade/accordion";
+@import "sections/itrade/filters";
+@import "sections/itrade/categories";
+@import "sections/order-repair/form";
+
+.title {
+  margin: 0 auto;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.grid {
+  margin-top: $spacing-xl;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.products-list {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.container {
+  padding: 0 $spacing-sm;
+}
+
+.page {
+  margin-bottom: $spacing-xxl;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .container {
+    padding: 0;
+  }
+
+  .faq-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: $spacing-md;
+  }
+
+  .accordion-container {
+    grid-column: span 4 / span 4;
+    margin-top: $spacing-xl;
+
+    .title {
+      margin: 0;
+      font-size: 32px;
+    }
+  }
+
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: $spacing-md;
+  }
+
+  .products-list {
+    grid-column: span 4 / span 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-md;
+  }
+}
+
+.open-mobile-filters-button {
+  background-color: $color-bg-light;
+  border-radius: 36px;
+  padding: 6px 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-xs;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 286px 114px rgba(0, 0, 0, 0.01),
+    0px 161px 97px rgba(0, 0, 0, 0.05), 0px 72px 72px rgba(0, 0, 0, 0.09),
+    0px 18px 39px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, scale 0.2s;
+
+  svg {
+    color: purple;
+  }
+
+  &:hover {
+    background-color: darken($color-bg-light, 10%);
+  }
+}

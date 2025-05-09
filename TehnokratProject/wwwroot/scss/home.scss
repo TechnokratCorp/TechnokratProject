@@ -1,0 +1,15 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+
+@import "sections/home/hero";
+@import "sections/home/repair-steps";
+@import "sections/home/popular-services";
+@import "sections/home/how-we-work";
+@import "sections/home/guarantee";
+@import "sections/home/reviews";
+@import "sections/home/locations";
+@import "sections/order-repair/form";

@@ -1,0 +1,27 @@
+@import "../css/global.css";
+
+@import "components/variables";
+@import "components/header";
+@import "components/mobile-menu";
+@import "components/footer";
+@import "components/breadcrumbs";
+@import "components/page-title";
+
+@import "sections/product/tabs";
+@import "sections/repair/repair-content";
+@import "sections/repair/repair-prices";
+@import "sections/order-repair/form";
+
+.repair-page {
+  padding: $spacing-xl 0;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .tabs {
+    margin-top: $spacing-xl;
+  }
+}

@@ -1,0 +1,236 @@
+@import "../../components/variables";
+
+.bring-yourself-section,
+.nova-poshta-section {
+  margin: 32px auto;
+  padding: 0;
+  background: none;
+  width: fit-content;
+
+  &__container {
+    border-radius: 24px;
+    margin: 0;
+    padding: 32px 16px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__desc {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+.bring-yourself-section {
+  &__container {
+    background: $color-bg-light;
+    color: $color-text;
+  }
+
+  &__title {
+    color: $color-text;
+  }
+
+  &__desc {
+    color: $color-text;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  &__city {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__address {
+    font-size: 1.1rem;
+    color: $color-text;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__schedule-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  &__schedule {
+    font-size: 1.1rem;
+    color: $color-text;
+    text-align: center;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__button.primary_button {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+.nova-poshta-section {
+  &__container {
+    background: $color-bg-dark;
+    color: $color-bg-light;
+  }
+
+  &__title {
+    color: $color-bg-light;
+  }
+
+  &__desc {
+    color: $color-bg-light;
+  }
+
+  &__instructions {
+    color: $color-bg-light;
+    line-height: 1.4;
+    font-size: 16px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 32px;
+    text-align: center;
+
+    b {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  &__steps {
+    color: $color-bg-light;
+    font-size: 16px;
+    margin-left: 0;
+    padding-left: 16px;
+    margin-top: 20px;
+    list-style-position: inside;
+    text-align: left;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    padding-left: 25px;
+
+    li {
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+  }
+
+  &__button {
+    margin-top: auto;
+    width: 100%;
+    max-width: 380px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 32px;
+    padding: 16px 0;
+    background: $color-bg-light;
+    color: $color-text;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(39, 37, 48, 0.04);
+
+    &:hover {
+      background: darken($color-bg-light, 5%);
+    }
+  }
+
+  &__button-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+  }
+}
+
+.location-sections-wrapper {
+  background: $color-bg-medium;
+  border-radius: 24px;
+  margin: 32px 0;
+  padding: 16px;
+  display: block;
+  position: relative;
+}
+
+@media (min-width: $bp-large-desktop) {
+  .location-sections-wrapper {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    margin: 60px auto;
+    max-width: $bp-large-desktop;
+    padding: 20px;
+  }
+
+  .bring-yourself-section,
+  .nova-poshta-section {
+    flex: 0 0 55%;
+    margin: 0;
+    position: relative;
+
+    &__container {
+      height: auto;
+      max-width: none;
+      justify-content: space-between;
+      padding: 32px;
+    }
+  }
+
+  .bring-yourself-section {
+    flex: 0 0 50%;
+    margin: auto 0;
+    z-index: 1;
+    &__container {
+      padding: 50px 0px;
+    }
+    &__button.primary_button {
+      margin-top: 24px;
+    }
+  }
+
+  .nova-poshta-section {
+    z-index: 2;
+    margin-left: -5%;
+    &__container {
+      box-shadow: 0px 286px 114px rgba(0, 0, 0, 0.01),
+        0px 161px 97px rgba(0, 0, 0, 0.05), 0px 72px 72px rgba(0, 0, 0, 0.09),
+        0px 18px 39px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

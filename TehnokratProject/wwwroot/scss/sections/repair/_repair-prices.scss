@@ -1,0 +1,180 @@
+@import "../../components/variables";
+
+.repair-prices {
+  background-color: $color-bg-light;
+  padding: 0 $spacing-md;
+  &__title {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__accordion-container {
+    margin-bottom: $spacing-md;
+  }
+
+  &__accordion-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: $spacing-md;
+  }
+
+  .accordion-item {
+    margin-bottom: $spacing-xs;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    border: 1px solid $color-bg-medium;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background-color: $color-bg-dark;
+    color: $color-bg-light;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: $border-radius-sm;
+    border-bottom: none;
+    position: relative;
+    transition: border-radius 0.3s ease;
+
+    .accordion-arrow {
+      transition: transform 0.3s ease;
+      stroke: $color-bg-light;
+    }
+  }
+
+  .accordion-content {
+    padding: 0 $spacing-md $spacing-sm $spacing-md;
+    background-color: $color-bg-light;
+    color: $color-text;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease, padding-top 0.3s ease,
+      padding-bottom 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 14px;
+    border-bottom-left-radius: $border-radius-sm;
+    border-bottom-right-radius: $border-radius-sm;
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      padding: $spacing-sm 0;
+      border-bottom: 1px solid $color-bg-medium;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      span:first-child {
+        flex-grow: 1;
+        padding-right: $spacing-sm;
+        opacity: 0.9;
+      }
+      span:last-child {
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .accordion-item.active {
+    .accordion-header {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 1px solid $color-bg-medium;
+
+      .accordion-arrow {
+        transform: rotate(180deg);
+      }
+    }
+    .accordion-content {
+      max-height: 500px;
+      padding-top: $spacing-sm !important;
+      padding-bottom: $spacing-sm !important;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__table-container {
+    margin-bottom: $spacing-md;
+    overflow-x: auto;
+
+    border-radius: 20px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: $color-bg-light;
+      table-layout: fixed;
+    }
+
+    thead {
+      background-color: $color-bg-dark;
+      color: $color-bg-light;
+    }
+
+    th,
+    td {
+      padding: $spacing-sm $spacing-md;
+      text-align: center;
+      font-size: 14px;
+      vertical-align: middle;
+      word-wrap: break-word;
+    }
+
+    th {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    td {
+      border: 1px solid $color-bg-medium;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      &:nth-child(even) {
+      }
+      &:hover {
+        background-color: darken($color-bg-light, 3%);
+      }
+    }
+
+    td {
+      color: $color-text;
+    }
+  }
+
+  &__disclaimer {
+    font-size: 14px;
+    color: $color-text;
+    margin-top: $spacing-md;
+    padding: 0 0 $spacing-xl 0;
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .repair-prices {
+    padding: 0 $spacing-md;
+    border-radius: 0 0 20px 20px;
+
+    &__table-container {
+      th,
+      td {
+        font-size: 15px;
+      }
+    }
+  }
+}

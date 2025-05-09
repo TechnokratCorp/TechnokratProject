@@ -1,0 +1,58 @@
+@import "../../components/variables";
+
+.info-table {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text;
+    text-align: center;
+  }
+
+  .table {
+    background-color: $color-bg-light;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .table-row {
+      display: flex;
+      border-bottom: 1px solid darken($color-bg-medium, 10%);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .table-cell {
+        padding: 16px;
+        font-size: 16px;
+        color: $color-text;
+        display: flex;
+        align-items: center;
+        width: 50%;
+
+        &.table-cell__label {
+          color: $color-text;
+        }
+
+        &.table-cell__value {
+          font-weight: 500;
+        }
+
+        &:first-child {
+          border-right: 1px solid darken($color-bg-medium, 10%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .info-table {
+    .title {
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@import "../../components/variables";
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  margin: $spacing-lg 0;
+  box-sizing: border-box;
+  gap: $spacing-sm;
+  padding-left: $spacing-sm;
+  padding-bottom: $spacing-md;
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  max-width: $container-max-width;
+  margin: 0 auto;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  .tab {
+    border-radius: 36px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-xs;
+    box-sizing: border-box;
+    padding: 6px 20px;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s, scale 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-bg-light, 10%);
+    }
+
+    &.active {
+      background-color: $color-bg-light;
+      font-weight: 700;
+    }
+
+    img {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+}
+
+@media (min-width: $bp-large-desktop) {
+  .tabs {
+    gap: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+
+    .tab {
+      padding: $spacing-sm $spacing-xl;
+      border-radius: 0;
+      font-size: 20px;
+
+      &.first {
+        border-radius: 20px 0 0 0;
+      }
+
+      &.last {
+        border-radius: 0 20px 0 0;
+      }
+    }
+  }
+}
