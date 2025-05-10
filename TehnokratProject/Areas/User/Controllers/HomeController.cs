@@ -14,7 +14,7 @@ namespace TehnokratProject.Areas.User.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public IActionResult Home()
         {
             return View();
         }

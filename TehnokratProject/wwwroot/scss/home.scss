@@ -1,15 +1,15 @@
 @import "../css/global.css";
 
-@import "components/variables";
-@import "components/header";
-@import "components/mobile-menu";
-@import "components/footer";
+@import "components/_variables.scss";
+@import "components/_header.scss";
+@import "components/_mobile-menu.scss";
+@import "components/_footer.scss";
 
-@import "sections/home/hero";
-@import "sections/home/repair-steps";
-@import "sections/home/popular-services";
-@import "sections/home/how-we-work";
-@import "sections/home/guarantee";
-@import "sections/home/reviews";
-@import "sections/home/locations";
-@import "sections/order-repair/form";
+@import "sections/home/_hero.scss";
+@import "sections/home/_repair-steps.scss";
+@import "sections/home/_popular-services.scss";
+@import "sections/home/_how-we-work.scss";
+@import "sections/home/_guarantee.scss";
+@import "sections/home/_reviews.scss";
+@import "sections/home/_locations.scss";
+@import "sections/order-repair/_form.scss";

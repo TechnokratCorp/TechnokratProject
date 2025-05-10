@@ -8,28 +8,21 @@
 
   <ItemGroup>
     <Content Remove="Areas\User\Views\Home\nСontacts.cshtml" />
-    <Content Remove="Areas\User\Views\pages\home.cshtml" />
-    <Content Remove="Areas\User\Views\pages\itrade.cshtml" />
-    <Content Remove="Areas\User\Views\pages\layout.cshtml" />
-    <Content Remove="Areas\User\Views\pages\order-repair.cshtml" />
-    <Content Remove="Areas\User\Views\pages\product.cshtml" />
-    <Content Remove="Areas\User\Views\pages\repair.cshtml" />
-    <Content Remove="Areas\User\Views\pages\Services.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Home\Services.cshtml" />
-    <None Include="Areas\User\Views\Home\home.cshtml" />
+    <None Include="Areas\User\Views\Home\Home.cshtml" />
     <None Include="Areas\User\Views\Home\itrade.cshtml" />
     <None Include="Areas\User\Views\Home\layout.cshtml" />
     <None Include="Areas\User\Views\Home\order-repair.cshtml" />
     <None Include="Areas\User\Views\Home\product.cshtml" />
     <None Include="Areas\User\Views\Home\repair.cshtml" />
-    <None Include="wwwroot\imgs\.DS_Store" />
-    <None Include="wwwroot\imgs\sections\.DS_Store" />
-    <None Include="wwwroot\imgs\sections\guarantee\.DS_Store" />
-    <None Include="wwwroot\imgs\sections\popular-services\.DS_Store" />
+    <None Include="wwwroot\assets\imgs\.DS_Store" />
+    <None Include="wwwroot\assets\imgs\sections\.DS_Store" />
+    <None Include="wwwroot\assets\imgs\sections\guarantee\.DS_Store" />
+    <None Include="wwwroot\assets\imgs\sections\popular-services\.DS_Store" />
     <None Include="wwwroot\img\devices\laptop.png" />
     <None Include="wwwroot\img\devices\monitor.png" />
     <None Include="wwwroot\img\devices\printer.png" />
@@ -38,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -66,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\User\Views\pages\" />
     <Folder Include="wwwroot\img\devices\previews\" />
   </ItemGroup>
 
