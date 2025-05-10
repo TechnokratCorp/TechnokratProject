@@ -18,12 +18,13 @@ namespace TehnokratProject.Areas.User.Controllers
         {
             return View();
         }
+
         public IActionResult Services() // оняксцх
         {
             return View();
         }
 
-        public IActionResult about() // оняксцх
+        public IActionResult About() // оняксцх
         {
             return View();
         }

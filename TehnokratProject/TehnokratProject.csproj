@@ -12,12 +12,11 @@
 
   <ItemGroup>
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
-    <None Include="Areas\User\Views\Home\Services.cshtml" />
-    <None Include="Areas\User\Views\Home\Home.cshtml" />
+    <None Include="Areas\User\Views\Services\List.cshtml" />
     <None Include="Areas\User\Views\Home\itrade.cshtml" />
     <None Include="Areas\User\Views\Home\layout.cshtml" />
     <None Include="Areas\User\Views\Home\order-repair.cshtml" />
-    <None Include="Areas\User\Views\Home\product.cshtml" />
+    <None Include="Areas\User\Views\Product\Home.cshtml" />
     <None Include="Areas\User\Views\Home\repair.cshtml" />
     <None Include="wwwroot\assets\imgs\.DS_Store" />
     <None Include="wwwroot\assets\imgs\sections\.DS_Store" />

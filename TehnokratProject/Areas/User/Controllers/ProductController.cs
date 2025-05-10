@@ -19,5 +19,9 @@ namespace TehnokratProject.Areas.User.Controllers
             List<Product> products = await db.products.ToListAsync();
             return View(products);
         }
+        public IActionResult Home()
+        {
+            return View();
+        }
     }
 }

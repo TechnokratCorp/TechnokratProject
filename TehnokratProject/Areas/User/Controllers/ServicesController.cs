@@ -2,8 +2,15 @@
 
 namespace TehnokratProject.Areas.User.Controllers
 {
+    [Area("User")]
     public class ServicesController:Controller
     {
+      
+        public IActionResult List()
+        {
+            return View();
+        }
+
         public IActionResult Phone()
         {
             return View();
