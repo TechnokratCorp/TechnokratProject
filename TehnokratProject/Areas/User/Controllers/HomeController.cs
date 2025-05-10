@@ -29,6 +29,11 @@ namespace TehnokratProject.Areas.User.Controllers
             return View();
         }
 
+        public IActionResult Products() // оняксцх
+        {
+            return View();
+        }
+
         //public IActionResult Services() // оняксцх
         //{
         //    return View();
