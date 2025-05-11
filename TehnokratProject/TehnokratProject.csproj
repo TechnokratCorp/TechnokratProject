@@ -14,10 +14,10 @@
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Services\List.cshtml" />
     <None Include="Areas\User\Views\Home\Products.cshtml" />
-    <None Include="Areas\User\Views\Home\layout.cshtml" />
-    <None Include="Areas\User\Views\Home\order-repair.cshtml" />
-    <None Include="Areas\User\Views\Home\Homeaa.cshtml" />
-    <None Include="Areas\User\Views\Home\repair.cshtml" />
+    <None Include="Areas\User\Views\Home\etc\layout.cshtml" />
+    <None Include="Areas\User\Views\Home\etc\order-repair.cshtml" />
+    <None Include="Areas\User\Views\Home\Product.cshtml" />
+    <None Include="Areas\User\Views\Services\Phone.cshtml" />
     <None Include="wwwroot\assets\imgs\.DS_Store" />
     <None Include="wwwroot\assets\imgs\sections\.DS_Store" />
     <None Include="wwwroot\assets\imgs\sections\guarantee\.DS_Store" />

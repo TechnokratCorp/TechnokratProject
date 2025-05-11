@@ -1,0 +1,426 @@
+﻿@{
+    ViewData["Title"] = "Ремонт планшетів";
+    ViewData["PageCss"] = "repair.css";
+}
+
+
+<body>
+    <main class="repair-page">
+        <nav class="breadcrumbs">
+            <a href="/">Головна</a> / <a href="/pages/services.html">Послуги</a> /
+            <span class="font-bold">Ремонт планшетів</span>
+        </nav>
+
+        <h1 class="page-title">Оберіть ваш планшет</h1>
+
+        <div class="tabs">
+            <div class="tab active first">
+                <a href="#">Apple</a>
+            </div>
+            <div class="tab">
+                <a href="#">Samsung</a>
+            </div>
+            <div class="tab">
+                <a href="#">Xiaomi</a>
+            </div>
+            <div class="tab">
+                <a href="#">Huawei</a>
+            </div>
+            <div class="tab">
+                <a href="#">OnePlus</a>
+            </div>
+            <div class="tab last">
+                <a href="#">Інше</a>
+            </div>
+        </div>
+
+        <section class="repair-content repair-content--apple">
+            <div class="repair-content__image-container">
+                <img src="/assets/imgs/iphone-placeholder.webp" alt="Apple iPhone" />
+            </div>
+            <div class="repair-content__text-container">
+                <h2 class="repair-content__title font-semibold">
+                    Ремонтуючи Apple, ми гарантуємо вам якісні ремонтні роботи та
+                    можливість заміни деталей!
+                </h2>
+                <p class="repair-content__description">
+                    Ми використовуємо лише оригінальні запчастини, тому наш ремонт і
+                    заміна не призведуть до втрати гарантії. 90-денна гарантія на весь
+                    ремонт Apple.
+                </p>
+                <ul class="repair-content__features">
+                    <li>
+                        <svg width="20"
+                             height="20"
+                             viewBox="0 0 20 20"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6668 5.83301L7.50016 14.9997L3.3335 10.833"
+                                  stroke="#28a745"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                        <span>
+                            <strong class="font-semibold">Оригінальні запчастини</strong> —
+                            використовуємо тільки сертифіковані комплектуючі Apple.
+                        </span>
+                    </li>
+                    <li>
+                        <svg width="20"
+                             height="20"
+                             viewBox="0 0 20 20"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6668 5.83301L7.50016 14.9997L3.3335 10.833"
+                                  stroke="#28a745"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                        <span>
+                            <strong class="font-semibold">Професійні майстри</strong> —
+                            досвідчені спеціалісти з багаторічною практикою.
+                        </span>
+                    </li>
+                    <li>
+                        <svg width="20"
+                             height="20"
+                             viewBox="0 0 20 20"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6668 5.83301L7.50016 14.9997L3.3335 10.833"
+                                  stroke="#28a745"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                        <span>
+                            <strong class="font-semibold">Швидкий ремонт</strong> —
+                            більшість робіт виконуємо в день звернення.
+                        </span>
+                    </li>
+                </ul>
+                <label for="order-repair-modal"
+                       class="repair-content__button primary_button">
+                    Здати в ремонт
+                </label>
+            </div>
+        </section>
+
+        <section class="repair-prices">
+            <h2 class="repair-prices__title heading_2 font-semibold">Ціни</h2>
+
+            <div class="repair-prices__table-container desktop-only">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Apple</th>
+                            <th>Заміна скла</th>
+                            <th>Заміна дисплею (Оригінал)</th>
+                            <th>Заміна дисплею (Копія високої якості)</th>
+                            <th>Заміна батареї</th>
+                            <th>Заміна заднього скла корпусу</th>
+                            <th>Діагностика</th>
+                            <th>Інша проблема</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>-</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>8 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>X Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>11 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>12 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>13 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>від 1100 грн</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>14 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>-</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>15 Модель</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>-</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                        <tr>
+                            <td>SE 3 (2022)</td>
+                            <td>від 700 грн</td>
+                            <td>від 1600 грн</td>
+                            <td>-</td>
+                            <td>від 700 грн</td>
+                            <td>від 1000 грн</td>
+                            <td>БЕЗКОШТОВНО</td>
+                            <td>*Від 180 грн</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="repair-prices__accordion-container mobile-only">
+                <div class="repair-prices__accordion-header">
+                    <span>Apple</span>
+                    <span>Ціна</span>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>7 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="price-row">
+                            <span>Заміна скла</span><span>від 700 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна дисплею (Оригінал)</span><span>від 1600 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна дисплею (Копія високої якості)</span><span>від 1100 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна батареї</span><span>від 700 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна заднього скла корпусу</span><span>-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>8 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="price-row">
+                            <span>Заміна скла</span><span>від 700 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна дисплею (Оригінал)</span><span>від 1600 грн</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Заміна заднього скла корпусу</span><span>від 1000 грн</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>X модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>11 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>12 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>13 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>14 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>15 модель</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>SE 3 (2022)</span>
+                        <svg class="accordion-arrow"
+                             width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content"></div>
+                </div>
+            </div>
+
+            <p class="repair-prices__disclaimer">
+                * Зверніть увагу, що ціни можуть змінюватись, тому уточнюйте актуальні
+                ціни перед оформленням замовлення
+            </p>
+        </section>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>

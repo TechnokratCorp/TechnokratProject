@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TehnokratProject.Data;
+using TehnokratProject.Models;
 
 namespace TehnokratProject.Areas.User.Controllers
 {
     [Area("User")]
     public class ServicesController:Controller
     {
-      
+
         public IActionResult List()
         {
             return View();
@@ -27,6 +30,11 @@ namespace TehnokratProject.Areas.User.Controllers
         }
 
         public IActionResult TV()
+        {
+            return View();
+        }
+
+        public IActionResult PC()
         {
             return View();
         }
