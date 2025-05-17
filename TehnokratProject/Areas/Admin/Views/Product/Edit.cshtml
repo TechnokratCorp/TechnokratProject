@@ -1,15 +1,19 @@
-﻿@model TehnokratProject.Models.Product
+﻿@model TehnokratProject.Areas.Admin.ViewModels.ProductUpdateViewModel
 
 <h2> Редагування даних товару </h2>
 
-<form asp-action="EditPost" asp-controller="Product">
-    <p>
-        <label asp-for="id">Id</label><br />
-        <input type="text" asp-for="id" />
-    </p>
+<form asp-action="Edit" method="post" asp-controller="Product" enctype="multipart/form-data">
+    
     <p>
         <label asp-for="title">Назва</label><br />
         <input type="text" asp-for="title" />
+    </p>
+    <p>
+        <label asp-for="brand">Бренд</label><br />
+        <select asp-for="brand" asp-items="@(new SelectList(Model.BrandOptions))">
+            <option value="">-- Оберіть бренд --</option>
+        </select>
+        <span asp-validation-for="brand" class="text-danger"></span>
     </p>
     <p>
         <label asp-for="description">Опис</label><br />
@@ -28,6 +32,18 @@
         <input type="checkbox" asp-for="status" />
         <span asp-validation-for="status" class="text-danger"></span>
     </p>
+    <p>
+        <label asp-for="state">Стан</label><br />
+        <select asp-for="state" asp-items="@(new SelectList(Model.StateOptions))">
+            <option value="">-- Стан --</option>
+        </select>
+        <span asp-validation-for="state" class="text-danger"></span>
+    </p>
+    <p>
+        <label>Зображення:</label>
+        <input asp-for="ImageFile" type="file" /><br>
+    </p>
+
     <p>
         <input type="submit" value="Зберегти" />
     </p>

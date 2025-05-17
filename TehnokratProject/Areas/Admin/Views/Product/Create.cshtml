@@ -2,18 +2,31 @@
 
 <h2> Додати товар </h2>
 
-@*  public string title { get; set; }
-        public int category_id { get; set; }
+@*   public int id { get; set; }
+        public string title { get; set; }
+        public string brand { get; set; }
         public string description { get; set; }
-        public int price { get; set; }
-        public bool status { get; set; }
-        public string image_path { get; set; } *@
+        public int quantity { get; set; }
+        public int price { get; set; }  
+        public string state { get; set; } // БУ/НОВИЙ
+        public bool status { get; set; } // ЧИ ВІДОБРАЖАЄТЬСЯ НА ЕКРАНІ
+
+        public string image_path { get; set; }
+        public int category_id { get; set; }
+        public Category category { get; set; } *@
 
 
 <form asp-action="Create" asp-controller="Product" enctype="multipart/form-data">
     <p>
         <label asp-for="title">Назва</label><br />
         <input type="text" asp-for="title" />
+    </p>
+    <p>
+        <label asp-for="brand">Бренд</label><br />
+        <select asp-for="brand" asp-items="@(new SelectList(Model.BrandOptions))">
+            <option value="">-- Оберіть бренд --</option>
+        </select>
+        <span asp-validation-for="brand" class="text-danger"></span>
     </p>
     <p>
         <label asp-for="description">Опис</label><br />
@@ -23,13 +36,17 @@
         <label asp-for="price">Ціна</label><br />
         <input type="number" asp-for="price" />
     </p>
-
+    <p>
+        <label asp-for="state">Стан</label><br />
+        <select asp-for="state" asp-items="@(new SelectList(Model.StateOptions))">
+            <option value="">-- Стан --</option>
+        </select>
+        <span asp-validation-for="state" class="text-danger"></span>
+    </p>
     <p>
         <label>Зображення:</label>
         <input asp-for="ImageFile" type="file" /><br>
     </p>
-    
-
     <p>
         <label asp-for="category_id">Category</label><br />
         <select asp-for="category_id" asp-items="@(new SelectList(Model.Categories, "id", "title"))">

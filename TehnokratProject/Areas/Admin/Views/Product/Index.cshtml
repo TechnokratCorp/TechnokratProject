@@ -5,9 +5,6 @@
 
 <a asp-controller="Product" asp-action="Create">Додати товар</a>
 
-<form method="get">
-</form>
-
 <table>
     <tr>
         <th>
@@ -17,6 +14,9 @@
             <a asp-action="Index">Назва</a>
         </th>
         <th>
+            <a asp-action="Index">Бренд</a>
+        </th>
+        <th>
             <a asp-action="Index">Опис</a>
         </th>
         <th>
@@ -24,6 +24,9 @@
         </th>
         <th>
             <a asp-action="Index">Ціна</a>
+        </th>
+        <th>
+            <a asp-action="Index">Стан</a>
         </th>
         <th>
             <a asp-action="Index">Статус</a>
@@ -39,6 +42,7 @@
         <tr>
             <td>@product.id</td>
             <td>@product.title</td>
+            <td>@product.brand</td>
             <td>@product.description</td>
             
             @if (product.quantity == 0)
@@ -49,6 +53,7 @@
                 <td>@product.quantity</td>
             }
             <td>@product.price</td>
+            <td>@product.state</td>
             @if (product.status == true){
                  <td>Активне</td>
             }
@@ -58,7 +63,7 @@
             <td>@product.category?.title</td>
 
             <td>
-                <form asp-controller="Product" asp-action="Edit" asp-route-id="@product.id">
+                <form asp-controller="Product" asp-action="Edit" asp-route-id="@product.id" method="get">
                     <input type="submit" value="Редагувати"></input>
                 </form>
 

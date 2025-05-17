@@ -30,7 +30,9 @@ namespace TehnokratProject.Areas.Admin.Controllers
             var categories = await db.categories.ToListAsync();
             var viewModel = new ProductCreateViewModel
             {
-                Categories = categories
+                Categories = categories,
+                StateOptions = GetStates(),
+                BrandOptions = GetBrands()
             };
             return View(viewModel);
         }
@@ -72,7 +74,9 @@ namespace TehnokratProject.Areas.Admin.Controllers
                 image_path = "/img/products/" + fileName, // <- Шлях для фронтенду
                 category_id = model.category_id.Value,
                 category = db.categories.FirstOrDefault(p => p.id == model.category_id),
-                price = model.price
+                price = model.price,
+                state = model.state,
+                brand = model.brand
             };
 
             db.products.Add(product);
@@ -83,36 +87,90 @@ namespace TehnokratProject.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditPost(Product product)
+        public async Task<IActionResult> Edit(ProductUpdateViewModel model)
         {
-            Product existing_product = db.products.FirstOrDefault(p => p.id == product.id);
-            if (existing_product == null)
-                return NotFound();
-            existing_product.image_path = "";
-            existing_product.title = product.title;
-            existing_product.description = product.description;
-            existing_product.price = product.price;
-            existing_product.quantity = product.quantity;
-            existing_product.status = product.status;
-            existing_product.image_path = "";
-            
-            db.products.Update(existing_product);
+            //if (!ModelState.IsValid)
+            //{
+            //    foreach (var state in ModelState)
+            //    {
+            //        foreach (var error in state.Value.Errors)
+            //        {
+            //            Console.WriteLine($"Field: {state.Key}, Error: {error.ErrorMessage}");
+            //        }
+            //    }
+            //    model.BrandOptions = GetBrands();
+
+            //    return View("Edit", model);
+            //}
+
+            var existing = await db.products.FirstOrDefaultAsync(p => p.id == model.id);
+            if (existing == null) return NotFound();
+
+            // Оновлюємо поля
+            existing.title = model.title;
+            existing.description = model.description;
+            existing.price = model.price;
+            existing.quantity = model.quantity;
+            existing.status = model.status;
+            existing.state = model.state;
+            existing.brand = model.brand;
+
+            // Якщо додано нове зображення
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/products");
+                string newFileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ImageFile.FileName);
+                string newFilePath = Path.Combine(uploadsFolder, newFileName);
+
+                // Зберігаємо нове зображення
+                using (var stream = new FileStream(newFilePath, FileMode.Create))
+                {
+                    await model.ImageFile.CopyToAsync(stream);
+                }
+
+                // Можна видалити старе зображення
+                if (!string.IsNullOrEmpty(model.ExistingImagePath))
+                {
+                    string oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", model.ExistingImagePath.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath))
+                    {
+                        System.IO.File.Delete(oldPath);
+                    }
+                }
+
+                // Зберігаємо новий шлях
+                existing.image_path = "/img/products/" + newFileName;
+            }
+
+            db.products.Update(existing);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id != null)
+            if (id == null) return NotFound();
+
+            var product = await db.products.FirstOrDefaultAsync(p => p.id == id);
+            if (product == null) return NotFound();
+
+            var vm = new ProductUpdateViewModel
             {
-                Product? product = await db.products.FirstOrDefaultAsync(c => c.id == id);
-                if (product != null)
-                {
-                    return View(product);
-                }
-            }
-            return NotFound();
+                id = product.id,
+                title = product.title,
+                description = product.description,
+                price = product.price,
+                quantity = product.quantity,
+                status = product.status,
+                state = product.state,
+                brand = product.brand,
+                ExistingImagePath = product.image_path,
+                BrandOptions = GetBrands(),
+                StateOptions = GetStates(),
+            };
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -129,5 +187,35 @@ namespace TehnokratProject.Areas.Admin.Controllers
             }
             return NotFound();
         }
+
+        private List<string> GetStates()
+        {
+            return new List<string>
+            { "Новий", "БУ", "Відновлений" };
+        }
+
+        private List<string> GetBrands()
+        {
+            return new List<string>
+            {
+                // Смартфони / Гаджети
+                "Apple", "Samsung", "Xiaomi", "Huawei", "OnePlus", "Oppo", "Realme", "Sony", "Google", "Nokia",
+                // Ноутбуки / Комп’ютери
+                "ASUS", "Acer", "Dell", "HP", "Lenovo", "MSI", "Razer", "Microsoft",
+                // Телевізори / Smart TV
+                "TCL", "Hisense", "Panasonic", "Philips", "Sharp",
+                // Побутова техніка
+                "Bosch", "Whirlpool", "Electrolux", "Gorenje", "Beko", "Zanussi", "Miele", "Haier",
+                // Аудіо / Навушники / Колонки
+                "JBL", "Bose", "Sennheiser", "Beats", "Marshall", "Anker", "Bang & Olufsen",
+                // Фото / Відео
+                "Canon", "Nikon", "Fujifilm", "Olympus", "GoPro", "DJI",
+                // Ігрова техніка
+                "Nintendo", "Logitech", "HyperX", "SteelSeries", "Corsair",
+                // Принтери / Периферія
+                "Epson", "Trust", "A4Tech"
+            };
+        }
+
     }
 }

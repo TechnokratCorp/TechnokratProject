@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\ViewModels\ProductUpdateViewModel.cs" />
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Services\List.cshtml" />
     <None Include="Areas\User\Views\Home\Products.cshtml" />
