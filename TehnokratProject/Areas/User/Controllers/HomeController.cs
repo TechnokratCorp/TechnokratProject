@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using TehnokratProject.Data;
 using TehnokratProject.Models;
 
 namespace TehnokratProject.Areas.User.Controllers
@@ -7,8 +9,11 @@ namespace TehnokratProject.Areas.User.Controllers
     [Area("User")]
     public class HomeController : Controller
     {
-
-        
+        ApplicationDbContext db;
+        public HomeController(ApplicationDbContext context)
+        {
+            db = context;
+        }
         public IActionResult Contacts()
         {
             return View();
@@ -31,7 +36,8 @@ namespace TehnokratProject.Areas.User.Controllers
 
         public IActionResult Products() // оняксцх
         {
-            return View();
+            var products = db.products.Include(p => p.category).ToList();
+            return View(products);
         }
 
         //public IActionResult Services() // оняксцх

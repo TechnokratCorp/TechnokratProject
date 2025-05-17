@@ -15,6 +15,10 @@ namespace TehnokratProject.Areas.Admin.ViewModels
         public bool status { get; set; }
         public string image_path { get; set; }
 
+        // Завантажене зображення
+        [Display(Name = "Зображення")]
+        public IFormFile ImageFile { get; set; }
+
         public ProductCreateViewModel()
         {
             Categories = Enumerable.Empty<Category>();

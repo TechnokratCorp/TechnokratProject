@@ -38,22 +38,49 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateViewModel model)
         {
+            string fileName = null;
+
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
+            {
+                // Унікальна назва файлу
+                fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ImageFile.FileName);
+
+                // Шлях для збереження
+                string uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/products");
+
+                // Якщо папки немає — створюємо
+                if (!Directory.Exists(uploads))
+                {
+                    Directory.CreateDirectory(uploads);
+                }
+
+                // Повний шлях до файлу
+                string filePath = Path.Combine(uploads, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.ImageFile.CopyToAsync(stream);
+                }
+            }
+
             var product = new Product
             {
                 title = model.title,
                 description = model.description,
                 status = true,
                 quantity = 0,
-                image_path = "",
+                image_path = "/img/products/" + fileName, // <- Шлях для фронтенду
                 category_id = model.category_id.Value,
                 category = db.categories.FirstOrDefault(p => p.id == model.category_id),
-                
                 price = model.price
             };
+
             db.products.Add(product);
             await db.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> EditPost(Product product)

@@ -10,7 +10,7 @@
         public string image_path { get; set; } *@
 
 
-<form asp-action="Create" asp-controller="Product">
+<form asp-action="Create" asp-controller="Product" enctype="multipart/form-data">
     <p>
         <label asp-for="title">Назва</label><br />
         <input type="text" asp-for="title" />
@@ -23,10 +23,12 @@
         <label asp-for="price">Ціна</label><br />
         <input type="number" asp-for="price" />
     </p>
-    @* <p>
-        <label asp-for="rating">Оцініть нас від 1 до 5</label><br />
-        <input type="number" asp-for="rating" />
-    </p> *@
+
+    <p>
+        <label>Зображення:</label>
+        <input asp-for="ImageFile" type="file" /><br>
+    </p>
+    
 
     <p>
         <label asp-for="category_id">Category</label><br />
