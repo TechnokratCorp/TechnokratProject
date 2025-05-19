@@ -14,7 +14,7 @@
     <None Include="Areas\Admin\ViewModels\ProductUpdateViewModel.cs" />
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Services\List.cshtml" />
-    <None Include="Areas\User\Views\Home\Products.cshtml" />
+    <None Include="Areas\User\Views\Product\Index.cshtml" />
     <None Include="Areas\User\Views\Home\etc\layout.cshtml" />
     <None Include="Areas\User\Views\Home\etc\order-repair.cshtml" />
     <None Include="Areas\User\Views\Home\Product.cshtml" />
@@ -60,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\User\Views\Product\" />
     <Folder Include="wwwroot\img\devices\previews\" />
   </ItemGroup>
 

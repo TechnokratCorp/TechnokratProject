@@ -1375,3 +1375,25 @@
     margin: 0;
   }
 }
+
+.categories__item {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.2s ease;
+    display: inline-block;
+    width: 100px;
+    user-select: none;
+}
+
+    .categories__item.active,
+    .categories__item:hover {
+        background-color: #eef;
+        border-color: #88f;
+    }
+
+    .categories__item input[type="checkbox"] {
+        display: none;
+    }
