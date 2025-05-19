@@ -62,7 +62,7 @@
           <p>Виберіть пристрій щоб дізнатися вартість ремонту</p>
           <div class="repair-steps__devices__device-list">
             <a
-              href="/services"
+              asp-area ="User" asp-controller="Services" asp-action="Phone"
               class="repair-steps__devices__device-list__item"
             >
               <img
@@ -73,8 +73,7 @@
               />
               Смартфон
             </a>
-            <a
-              href="/services"
+            <a asp-area="User" asp-controller="Services" asp-action="Laptop"
               class="repair-steps__devices__device-list__item"
             >
               <img
@@ -85,8 +84,7 @@
               />
               Ноутбук
             </a>
-            <a
-              href="/services"
+            <a asp-area="User" asp-controller="Services" asp-action="Printer"
               class="repair-steps__devices__device-list__item"
             >
               <img
@@ -97,8 +95,7 @@
               />
               Принтер
             </a>
-            <a
-              href="/services"
+            <a asp-area="User" asp-controller="Services" asp-action="TV"
               class="repair-steps__devices__device-list__item"
             >
               <img
@@ -109,8 +106,8 @@
               />
               Телевізор
             </a>
-            <a
-              href="/services"
+            <a 
+              asp-area="User" asp-controller="Services" asp-action="List"
               class="repair-steps__devices__device-list__item"
             >
               <img
