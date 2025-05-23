@@ -161,10 +161,10 @@
             <div class="footer__section">
                 <div class="footer__section-title">Інформація</div>
                 <div class="footer__section-link">
-                    <a href="/about">Про нас</a>
+                    <a asp-area="User" asp-controller="Home" asp-action="About">Про нас</a>
                 </div>
                 <div class="footer__section-link">
-                    <a href="/services">Ціни на послуги</a>
+                    <a asp-area="User" asp-controller="Services" asp-action="List">Ціни на послуги</a>
                 </div>
                 <div class="footer__section-link">
                     <a asp-area="User" asp-controller="Application" asp-action="Help" for="order-consultation-modal">Консультація</a>
@@ -173,10 +173,10 @@
             <div class="footer__section">
                 <div class="footer__section-title">Послуги</div>
                 <div class="footer__section-link">
-                    <a href="/repair">Ремонт телефонів</a>
+                    <a asp-area="User" asp-controller="Services" asp-action="Phone">Ремонт телефонів</a>
                 </div>
-                <div class="footer__section-link"><a href="/itrade">Ноутбуки</a></div>
-                <div class="footer__section-link"><a href="/itrade">Інше</a></div>
+                <div class="footer__section-link"><a asp-area="User" asp-controller="Services" asp-action="Laptop">Ноутбуки</a></div>
+                <div class="footer__section-link"><a asp-area="User" asp-controller="Services" asp-action="List">Інше</a></div>
             </div>
             <div class="footer__section">
                 <div class="footer__section-title">Контакти</div>

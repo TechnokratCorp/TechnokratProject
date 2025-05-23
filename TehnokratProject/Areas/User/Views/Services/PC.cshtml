@@ -6,7 +6,7 @@
 <body>
     <main class="repair-page">
         <nav class="breadcrumbs">
-            <a href="/">Головна</a> / <a href="/pages/services.html">Послуги</a> /
+            <a href="/">Головна</a> / <a asp-area="User" asp-controller="Services" asp-action="List">Послуги</a> /
             <span class="font-bold">Ремонт комп'ютерів</span>
         </nav>
 
@@ -100,10 +100,10 @@
                         </span>
                     </li>
                 </ul>
-                <label for="order-repair-modal"
+                <a asp-area="User" asp-controller="Application" asp-action="Help" for="order-repair-modal"
                        class="repair-content__button primary_button">
                     Здати в ремонт
-                </label>
+                </a>
             </div>
         </section>
 
