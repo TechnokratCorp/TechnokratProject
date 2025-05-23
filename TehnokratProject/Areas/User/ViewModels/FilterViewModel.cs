@@ -8,6 +8,11 @@
         public List<string> Brands { get; set; } = new();
         public List<string> States { get; set; } = new();
         public List<bool> Statuses { get; set; } = new();
+
+        public ProductFilterModel()
+        {
+            MaxPrice = 30000;
+        }
     }
 
 }

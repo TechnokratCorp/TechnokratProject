@@ -1,0 +1,113 @@
+﻿@model TehnokratProject.Models.ContactForm
+@{
+    
+    ViewData["PageCss"] = "home.css";
+}
+<head>
+   
+    <title>Форма замовлення</title>
+    <style>
+        /* Загальні стилі */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        /* Модальне вікно */
+        .modal {
+            background-color: #fff;
+            width: 500px;
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+            /* Заголовок */
+            .modal h2 {
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            /* Підзаголовок / опис */
+            .modal p {
+                text-align: center;
+                color: #333;
+                margin-bottom: 30px;
+            }
+
+        /* Група форми */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            /* Підпис до поля */
+            .form-group label {
+                display: block;
+                margin-bottom: 6px;
+                font-weight: 500;
+            }
+
+            /* Текстові поля та textarea */
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 14px 16px;
+                font-size: 16px;
+                background-color: #eee;
+                border: none;
+                border-radius: 15px;
+                resize: none;
+                box-sizing: border-box;
+            }
+
+        /* Кнопка відправки */
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #FFD54F;
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .submit-button:hover {
+                background-color: #ffca28;
+            }
+    </style>
+</head>
+<body>
+    <div class="modal">
+       
+        <h2>Замовити товар легко!</h2>
+        <p>Заповніть форму, і ми швидко зв'яжемося з вами для підтвердження замовлення</p>
+
+        <form asp-action="Buy" asp-controller="Application">
+            <div class="form-group">
+                <label asp-for="name">Ім’я</label>
+                <input type="text" asp-for="name" required />
+            </div>
+            <br></br>
+            <div class="form-group">
+                <label asp-for="phone">Телефон</label>
+                <input type="tel" asp-for="phone" required />
+            </div>
+            <br></br>
+            <div class="form-group">
+                <label asp-for="comment">Коментар до замовлення</label>
+                <textarea rows="4" asp-for="comment"></textarea>
+            </div>
+            <br></br>
+            <button type="submit" class="submit-button">Замовити товар</button>
+        </form>
+    </div>
+</body>

@@ -195,7 +195,7 @@
               <span class="font-bold">Заправка картриджів</span>
             </div>
           </div>
-          <a href="/services">
+          <a asp-area = "User" asp-controller="Services" asp-action="List">
             <button class="primary_button">Більше послуг</button>
           </a>
         </div>
@@ -313,9 +313,9 @@
             </div>
           </div>
 
-          <label for="order-consultation-modal" class="secondary_button"
-            >Отримати консультацію</label
-          >
+          <a asp-area = "User" asp-controller="Application" asp-action="Help" for="order-consultation-modal" class="secondary_button"
+          >Отримати консультацію </a>
+          
         </div>
       </section>
 
@@ -439,9 +439,8 @@
               <div>Субота: 10:00–16:00</div>
               <div>Неділя — вихідний</div>
             </div>
-            <label for="order-consultation-modal" class="primary_button"
-              >Отримати консультацію</label
-            >
+            <a asp-area = "User" asp-controller="Application" asp-action="Help" for="order-consultation-modal" class="primary_button"
+              >Отримати консультацію</a>
           </div>
         </section>
 
@@ -475,7 +474,9 @@
                 alt="Нова Пошта"
                 class="nova-poshta-section__button-icon"
               />
-              <span>Детальніше</span>
+              <span>
+                   <a asp-area="User" asp-controller="Application" asp-action="Help">Детальніше</a>
+              </span>
             </label>
           </div>
         </section>

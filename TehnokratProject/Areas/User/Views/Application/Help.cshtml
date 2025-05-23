@@ -87,29 +87,13 @@
 </head>
 <body>
     <div class="modal">
-        <span class="close">&times;</span>
-        <h2>Замовити товар легко!</h2>
-        <p>Заповніть форму, і ми швидко зв'яжемося з вами для підтвердження замовлення</p>
+       
+        <h2>Бажаєте замовити ремонт чи проконсультуватись з майстром - легко!</h2>
+        <p>
+            Залиште свої контакти, і наш спеціаліст зв'яжеться з вами найближчим часом
+        </p>
 
-
-        @* <form > *@
-        @*     <label asp-for="author_name">Ім'я</label> *@
-        @*     <input type="text" asp-for="author_name" required /> *@
-
-        @*     <label asp-for="author_email">Email</label> *@
-        @*     <input type="email" asp-for="author_email" required /> *@
-
-        @*     <label asp-for="text">Відгук</label> *@
-        @*     <textarea placeholder="Напишіть відгук тут" asp-for="text" required></textarea> *@
-
-        @*     <label asp-for="rating">Оцініть нас від 1 до 5</label> *@
-        @*     <input type="number" asp-for="rating" min="1" max="5" required /> *@
-
-        @*     <input type="submit" value="Відправити відгук!" /> *@
-        @* </form> *@
-
-
-        <form asp-action="Create" asp-controller="Application">
+        <form asp-action="Help" asp-controller="Application">
             <div class="form-group">
                 <label asp-for="name">Ім’я</label>
                 <input type="text" asp-for="name" required />
@@ -121,11 +105,11 @@
             </div>
             <br></br>
             <div class="form-group">
-                <label asp-for="comment">Коментар до замовлення</label>
-                <textarea rows="4" asp-for="comment"></textarea>
+                <label asp-for="comment">Ваше питання або коментар</label>
+                <textarea rows="4" asp-for="comment" required></textarea>
             </div>
             <br></br>
-            <button type="submit" class="submit-button">Замовити товар</button>
+            <button type="submit" class="submit-button">Відправити</button>
         </form>
     </div>
 </body>

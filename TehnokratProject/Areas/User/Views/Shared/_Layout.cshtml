@@ -93,7 +93,7 @@
                     </ul>
                 </nav>
 
-                <label for="order-product-modal" class="desktop-header__order-btn">Замовити ремонт</label>
+                <a asp-area="User" asp-controller="Application" asp-action="Help" for="order-product-modal" class="desktop-header__order-btn">Замовити ремонт</a>
             </div>
         </div>
     </header>
@@ -129,7 +129,7 @@
                     <a asp-area="User" asp-controller="Home" asp-action="Contacts">Контакти</a>
                 </li>
             </ul>
-            <label for="order-product-modal" class="mobile-menu__order-btn">Замовити ремонт</label>
+            <a asp-area="User" asp-controller="Application" asp-action="Help" for="order-product-modal" class="mobile-menu__order-btn">Замовити ремонт</a>
         </nav>
         <div class="mobile-menu__footer">
             <div class="mobile-menu__phones">
@@ -167,7 +167,7 @@
                     <a href="/services">Ціни на послуги</a>
                 </div>
                 <div class="footer__section-link">
-                    <label for="order-consultation-modal"><a href="#">Консультація</a></label>
+                    <a asp-area="User" asp-controller="Application" asp-action="Help" for="order-consultation-modal">Консультація</a>
                 </div>
             </div>
             <div class="footer__section">

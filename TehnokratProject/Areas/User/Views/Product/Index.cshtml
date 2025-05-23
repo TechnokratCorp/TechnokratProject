@@ -202,7 +202,7 @@
                 <div class="products-list">
                     @foreach (var product in Model.Products)
                     {
-                        <a asp-area="User" asp-controller="Application" asp-action="Create" class="product-card">
+                        <a asp-area="User" asp-controller="Application" asp-action="Buy" class="product-card">
                             <div class="product-card__img">
                                 <img src="@product.image_path"
                                         alt="@product.title"
