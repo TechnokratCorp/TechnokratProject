@@ -1,0 +1,65 @@
+﻿@{
+
+    ViewData["PageCss"] = "home.css";
+}
+<head>
+    <style>
+
+        
+        .confirmation h2 {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+        }
+
+       
+        .confirmation h3 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: normal;
+        margin-bottom: 30px;
+        color: #555;
+        }
+
+        .confirmation .submit-button {
+            width: 250px; /* фіксована ширина */
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #FFD54F;
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 auto; /* центрування */
+            display: block;
+        }
+
+        .confirmation .submit-button:hover {
+        background-color: #ffca28;
+       
+        }
+    </style>
+</head>
+
+<form asp-action="Home" asp-controller="Home">
+
+    <div class="confirmation">
+        <br />
+        <br />
+        <h2>Ваша заявка прийнята. Дякуємо, що ви з нами.</h2>
+        <br />
+        <br />
+        <h3>Наш менеджер зв'яжеться з Вами найближчим часом</h3>
+        <button type="submit" class="submit-button">Повернутися на головну</button>
+        <br />
+        <br />
+        <br />
+    </div>
+</form>
+
+
+ @* return RedirectToAction("Home", "Home", new { area = "User" }); *@

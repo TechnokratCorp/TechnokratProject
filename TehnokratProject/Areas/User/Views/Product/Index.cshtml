@@ -196,17 +196,13 @@
                             }
                         </div>
                     </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-primary">Застосувати фільтри</button>
-                    </div>
                 </div>
             
 
                 <div class="products-list">
                     @foreach (var product in Model.Products)
                     {
-                        <a href="/product/show/@product.id" class="product-card">
+                        <a asp-area="User" asp-controller="Application" asp-action="Create" class="product-card">
                             <div class="product-card__img">
                                 <img src="@product.image_path"
                                         alt="@product.title"
