@@ -23,11 +23,11 @@
     <None Include="wwwroot\assets\imgs\sections\.DS_Store" />
     <None Include="wwwroot\assets\imgs\sections\guarantee\.DS_Store" />
     <None Include="wwwroot\assets\imgs\sections\popular-services\.DS_Store" />
-    <None Include="wwwroot\img\devices\laptop.png" />
-    <None Include="wwwroot\img\devices\monitor.png" />
-    <None Include="wwwroot\img\devices\printer.png" />
-    <None Include="wwwroot\img\devices\smartphone.png" />
-    <None Include="wwwroot\img\devices\television.png" />
+    <None Include="wwwroot\img\devices\Icnons\laptop.png" />
+    <None Include="wwwroot\img\devices\Icnons\monitor.png" />
+    <None Include="wwwroot\img\devices\Icnons\printer.png" />
+    <None Include="wwwroot\img\devices\Icnons\smartphone.png" />
+    <None Include="wwwroot\img\devices\Icnons\television.png" />
   </ItemGroup>
 
   <ItemGroup>

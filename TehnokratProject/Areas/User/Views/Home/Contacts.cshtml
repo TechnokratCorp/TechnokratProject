@@ -81,11 +81,11 @@
             </div>
         </div>
         <div class="mobile-only padding-x">
-            <form class="form">
+            <form asp-action="Help" asp-controller="Application" class="form">
                 <h3 class="form__title">
                     Заповніть форму, і ми швидко зв'яжемося з вами
                 </h3>
-                <label class="label">Ім'я<input type="text" class="input" /></label>
+                <label asp-for="name" class="label">Ім'я<input type="text" asp-for="name" class="input" /></label>
 
                 <label class="label">Телефон<input type="tel" class="input" /></label>
 
