@@ -92,6 +92,7 @@
         <p>Заповніть форму, і ми швидко зв'яжемося з вами для підтвердження замовлення</p>
 
         <form asp-action="Buy" asp-controller="Application">
+            <input type="hidden" name="productId" value="@ViewBag.ProductId"/>
             <div class="form-group">
                 <label asp-for="name">Ім’я</label>
                 <input type="text" asp-for="name" required />

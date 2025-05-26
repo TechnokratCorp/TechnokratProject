@@ -3,27 +3,30 @@ using System.Net.Mail;
 using System.Net;
 using TehnokratProject.Models;
 using Microsoft.Extensions.Configuration;
+using TehnokratProject.Data;
 
 namespace TehnokratProject.Areas.User.Controllers
 {
     [Area("User")]
-    public class Application : Controller
+    public class ApplicationController : Controller
     {
         private readonly IConfiguration _config;
-
-        public Application(IConfiguration config)
+        private ApplicationDbContext db;
+        public ApplicationController(IConfiguration config, ApplicationDbContext db_)
         {
             _config = config;
+            db = db_;
         }
 
-        public IActionResult Buy()
+        public IActionResult Buy(int id)
         {
+            ViewBag.ProductId = id; // Передаємо ID у View
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Buy(ContactForm model)
+        public async Task<IActionResult> Buy(ContactForm model, int productId)
         {
-            return await send_message(model, "buy");
+            return await send_message(model, "buy", productId);
         }
 
         public IActionResult Help()
@@ -33,7 +36,7 @@ namespace TehnokratProject.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Help(ContactForm model)
         {
-            return await send_message(model, "help");
+            return await send_message(model, "help", 0);
         }
 
         public IActionResult Success()
@@ -41,7 +44,7 @@ namespace TehnokratProject.Areas.User.Controllers
             return View();
         }
 
-        public async Task<IActionResult> send_message(ContactForm model, string type)
+        public async Task<IActionResult> send_message(ContactForm model, string type, int productId)
         {
             var from = new MailAddress("dmitrywork33@gmail.com", "Форма з сайту"); // email smtp
             var to = new MailAddress("kurson.d@gmail.com"); // Email менеджера
@@ -49,7 +52,7 @@ namespace TehnokratProject.Areas.User.Controllers
             string subject = "";
             if (type == "buy")
             {
-                subject = "НОВЕ ЗАМОВЛЕННЯ ТОВАРУ";
+                subject = "НОВЕ ЗАМОВЛЕННЯ ТОВАРУ - Товар " + db.products.FirstOrDefault(p => p.id == productId).title + " (" + productId + ")";
             }
             else if (type == "help")
             {
