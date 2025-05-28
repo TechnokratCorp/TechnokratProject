@@ -13,7 +13,7 @@
     <form method="get" asp-area="User" asp-controller="Product" asp-action="Index">
         <main class="page">
             <div class="container">
-                <h1 class="title">iTrade</h1>
+                <h1 class="title">Товари</h1>
             </div>
 
             @* @{ *@
@@ -173,13 +173,14 @@
                             @foreach (var state in new[] { "Новий", "Б/У", "Відновлений" })
                             {
                                 <label class="filter-checkbox">
-                                    <input type="checkbox" name="Conditions" value="@state" @(Model.Filters.States.Contains(state) ? "checked" : "") />
+                                    <input type="checkbox" name="States" value="@state" @(Model.Filters.States.Contains(state) ? "checked" : "") />
                                     <span class="filter-checkbox__checkmark"></span>
                                     @state
                                 </label>
                             }
                         </div>
                     </div>
+
 
                     <!-- Наявність -->
                     <div class="filter-group">
@@ -188,17 +189,17 @@
                             <svg class="filter-group__arrow" width="16" height="16"><path d="M4 10L8 6L12 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
                         </button>
                         <div class="filter-group__content">
-                            @foreach (var option in new[] { new { Text = "В наявності", Value = true }, new { Text = "Під замовлення", Value = false } })
-                            {
-                                <label class="filter-checkbox">
-                                    <input type="checkbox"
-                                            name="Statuses"
-                                            value="@option.Value.ToString().ToLower()"
-                                    @(Model.Filters.Statuses.Contains(option.Value) ? "checked" : "") />
-                                    <span class="filter-checkbox__checkmark"></span>
-                                    @option.Text
-                                </label>
-                            }
+                                @foreach (var option in new[] { new { Text = "В наявності", Value = "в наявності" }, new { Text = "Немає в наявності", Value = "немає в наявності" } })
+                                {
+                                    <label class="filter-checkbox">
+                                        <input type="checkbox"
+                                               name="Quantity"
+                                               value="@option.Value"
+                                        @(Model.Filters.Quantity.Contains(option.Value) ? "checked" : "") />
+                                        <span class="filter-checkbox__checkmark"></span>
+                                        @option.Text
+                                    </label>
+                                }
                         </div>
                     </div>
                 </div>

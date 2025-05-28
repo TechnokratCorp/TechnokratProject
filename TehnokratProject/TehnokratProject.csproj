@@ -22,6 +22,39 @@
   <ItemGroup>
     <Content Include="Areas\Admin\.indev\Feedback\Create.cshtml" />
     <Content Include="Areas\Admin\.indev\Feedback\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Feedback\Create.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Feedback\Edit.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Feedback\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Problem\Create.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Problem\Edit.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Problem\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Solution\Create.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Solution\Edit.cshtml" />
+    <Content Include="Areas\Admin\.indev\NewFolder\Solution\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\Problem\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Admin\.indev\Problem\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Admin\.indev\Problem\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Admin\.indev\Solution\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Admin\.indev\Solution\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Areas\Admin\.indev\Solution\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

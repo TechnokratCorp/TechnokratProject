@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using TehnokratProject.Areas.User.ViewModels;
 using TehnokratProject.Data;
 using TehnokratProject.Models;
@@ -21,17 +22,34 @@ namespace TehnokratProject.Areas.User.Controllers
         {
             var query = db.products.AsQueryable();
 
-            // Фільтри
+            // Мінімальна ціна
             if (filter.MinPrice.HasValue)
                 query = query.Where(p => p.price >= filter.MinPrice.Value);
+
+            // Максимальна ціна
             if (filter.MaxPrice.HasValue)
                 query = query.Where(p => p.price <= filter.MaxPrice.Value);
+
+            // Категорії
             if (filter.Categories != null && filter.Categories.Any())
                 query = query.Where(p => filter.Categories.Contains(p.category.title));
+
+            // Бренди
             if (filter.Brands != null && filter.Brands.Any())
                 query = query.Where(p => filter.Brands.Contains(p.brand));
+
+            // СТАН: "Новий", "Б/у" тощо
             if (filter.States != null && filter.States.Any())
                 query = query.Where(p => filter.States.Contains(p.state));
+
+            if (filter.Quantity != null && filter.Quantity.Any())
+            {
+                query = query.Where(p =>
+                    (filter.Quantity.Contains("в наявності") && p.quantity > 0) ||
+                    (filter.Quantity.Contains("немає в наявності") && p.quantity <= 0)
+                );
+            }
+
 
             // Підрахунок сторінок
             int totalItems = query.Count();

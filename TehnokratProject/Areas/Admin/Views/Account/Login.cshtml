@@ -1,8 +1,18 @@
 ﻿@{
     Layout = "_AdminLoginLayout";
 }
-<h2> Увійти як адміністратор </h2>
 
+<style>
+    p {
+        padding-left: 100px;
+    }
+    h2{
+        padding-left: 50px;
+    }
+
+</style>
+<h2> Увійти як адміністратор </h2>
+<br></br>
 <form asp-action="Login" method = "post">
     <p>
         <label for="username">Логін:</label><br />

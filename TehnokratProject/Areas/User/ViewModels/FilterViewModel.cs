@@ -7,7 +7,7 @@
         public List<string> Categories { get; set; } = new();
         public List<string> Brands { get; set; } = new();
         public List<string> States { get; set; } = new();
-        public List<bool> Statuses { get; set; } = new();
+        public List<string> Quantity { get; set; } = new();
 
         public ProductFilterModel()
         {
