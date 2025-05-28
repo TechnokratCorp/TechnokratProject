@@ -1,20 +1,7 @@
 ﻿@model TehnokratProject.Areas.Admin.ViewModels.ProductCreateViewModel
 
-<h2> Додати товар </h2>
-
-@*   public int id { get; set; }
-        public string title { get; set; }
-        public string brand { get; set; }
-        public string description { get; set; }
-        public int quantity { get; set; }
-        public int price { get; set; }  
-        public string state { get; set; } // БУ/НОВИЙ
-        public bool status { get; set; } // ЧИ ВІДОБРАЖАЄТЬСЯ НА ЕКРАНІ
-
-        public string image_path { get; set; }
-        public int category_id { get; set; }
-        public Category category { get; set; } *@
-
+<h2> Додавання нового товару</h2>
+<br>
 
 <form asp-action="Create" asp-controller="Product" enctype="multipart/form-data">
     <p>
@@ -30,7 +17,7 @@
     </p>
     <p>
         <label asp-for="description">Опис</label><br />
-        <textarea placeholder="Напишіть опис тут" asp-for="description"></textarea>
+        <textarea placeholder="Напишіть опис тут" asp-for="description" style="width: 80%; height: 150px;"></textarea>
     </p>
     <p>
         <label asp-for="price">Ціна</label><br />
@@ -45,19 +32,22 @@
     </p>
     <p>
         <label>Зображення:</label>
+        <br>
         <input asp-for="ImageFile" type="file" /><br>
     </p>
     <p>
-        <label asp-for="category_id">Category</label><br />
+        <label asp-for="category_id">Категорія</label>
+        <br>
         <select asp-for="category_id" asp-items="@(new SelectList(Model.Categories, "id", "title"))">
             <option value="">-- Оберіть категорію товарів --</option>
         </select>
         <span asp-validation-for="category_id" class="text-danger"></span>
     </p>
-
+    <br></br>
     <p>
-        <input type="submit" value="Додати товар" />
+        <input type="submit" value="Додати товар" class="btn btn-add" />
     </p>
+    <br></br>
 </form>
 
 <form asp-action="index" asp-controller="Product">

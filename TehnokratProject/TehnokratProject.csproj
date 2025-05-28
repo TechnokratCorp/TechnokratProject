@@ -11,6 +11,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Areas\Admin\.indev\Feedback.cs" />
+    <Compile Include="Areas\Admin\.indev\FeedbackController.cs" />
+    <Compile Include="Areas\Admin\.indev\Problem.cs" />
+    <Compile Include="Areas\Admin\.indev\ProblemController.cs" />
+    <Compile Include="Areas\Admin\.indev\Solution.cs" />
+    <Compile Include="Areas\Admin\.indev\SolutionController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Areas\Admin\.indev\Feedback\Create.cshtml" />
+    <Content Include="Areas\Admin\.indev\Feedback\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Areas\Admin\ViewModels\ProductUpdateViewModel.cs" />
     <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Services\List.cshtml" />

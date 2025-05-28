@@ -198,22 +198,19 @@ namespace TehnokratProject.Areas.Admin.Controllers
         {
             return new List<string>
             {
+                "Без бренду",
                 // Смартфони / Гаджети
                 "Apple", "Samsung", "Xiaomi", "Huawei", "OnePlus", "Oppo", "Realme", "Sony", "Google", "Nokia",
                 // Ноутбуки / Комп’ютери
-                "ASUS", "Acer", "Dell", "HP", "Lenovo", "MSI", "Razer", "Microsoft",
+                "ASUS", "Acer", "Dell", "HP", "Lenovo", "MSI", "Razer",
                 // Телевізори / Smart TV
                 "TCL", "Hisense", "Panasonic", "Philips", "Sharp",
-                // Побутова техніка
-                "Bosch", "Whirlpool", "Electrolux", "Gorenje", "Beko", "Zanussi", "Miele", "Haier",
                 // Аудіо / Навушники / Колонки
-                "JBL", "Bose", "Sennheiser", "Beats", "Marshall", "Anker", "Bang & Olufsen",
-                // Фото / Відео
-                "Canon", "Nikon", "Fujifilm", "Olympus", "GoPro", "DJI",
+                "JBL", "Bose", "Beats",
                 // Ігрова техніка
-                "Nintendo", "Logitech", "HyperX", "SteelSeries", "Corsair",
+                "Nintendo", "Logitech", "HyperX", "Corsair",
                 // Принтери / Периферія
-                "Epson", "Trust", "A4Tech"
+                "Epson", "Trust", "Xerox", 
             };
         }
 

@@ -1,6 +1,7 @@
 ﻿@model TehnokratProject.Areas.Admin.ViewModels.ProductUpdateViewModel
 
 <h2> Редагування даних товару </h2>
+<br>
 
 <form asp-action="Edit" method="post" asp-controller="Product" enctype="multipart/form-data">
     
@@ -17,7 +18,7 @@
     </p>
     <p>
         <label asp-for="description">Опис</label><br />
-        <input type="text" asp-for="description" />
+        <textarea placeholder="Напишіть опис тут" asp-for="description" style="width: 80%; height: 150px;"></textarea>
     </p>
     <p>
         <label asp-for="quantity">Кількість</label><br />
@@ -41,14 +42,16 @@
     </p>
     <p>
         <label>Зображення:</label>
+        <br>
         <input asp-for="ImageFile" type="file" /><br>
     </p>
 
     <p>
-        <input type="submit" value="Зберегти" />
+        <input type="submit" value="Зберегти" class="btn btn-add" />
     </p>
+    <br></br>
 </form>
 
-<form asp-action="index" asp-controller="clients">
+<form asp-action="index" asp-controller="product">
     <input type="submit" value="Назад" />
 </form>

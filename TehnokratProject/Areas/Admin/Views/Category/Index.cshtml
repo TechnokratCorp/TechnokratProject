@@ -3,7 +3,7 @@
 <h1>Список категорій</h1>
 <br>
 
-<a asp-controller="Category" asp-action="create">Додати категорію</a>
+<a asp-controller="Category" asp-action="create" class="btn btn-add">Додати категорію</a>
 
 <form method="get">
 </form>
@@ -29,14 +29,14 @@
             <td>@category.title</td>
             <td>@category.description</td>
             <td>
-                <form asp-controller="Category" asp-action="Edit" asp-route-id="@category.id">
-                    <input type="submit" value="Редагувати"></input>
+                <form asp-controller="Category" asp-action="Edit" asp-route-id="@category.id" >
+                    <input type="submit" value="Редагувати" class="btn btn-edit"></input>
                 </form>
 
             </td>
             <td>
-                <form asp-controller="Category" asp-action="Delete" asp-route-id="@category.id">
-                    <input type="submit" value="Видалити"></input>
+                <form asp-controller="Category" asp-action="Delete" asp-route-id="@category.id" >
+                    <input type="submit" value="Видалити" class="btn btn-delete"></input>
                 </form>
             </td>
         </tr>

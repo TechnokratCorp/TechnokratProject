@@ -30,10 +30,6 @@ namespace TehnokratProject.Areas.User.Controllers
                 query = query.Where(p => filter.Categories.Contains(p.category.title));
             if (filter.Brands != null && filter.Brands.Any())
                 query = query.Where(p => filter.Brands.Contains(p.brand));
-            if (filter.Statuses.Any())
-            {
-                query = query.Where(p => filter.Statuses.Contains(p.status));
-            }
             if (filter.States != null && filter.States.Any())
                 query = query.Where(p => filter.States.Contains(p.state));
 
@@ -49,21 +45,19 @@ namespace TehnokratProject.Areas.User.Controllers
             var model = new ProductFilterPageViewModel
             {
                 Categories = db.categories.ToList(),
-                Brands = new List<string>{"Apple", "Samsung", "Xiaomi", "Huawei", "OnePlus", "Oppo", "Realme", "Sony", "Google", "Nokia",
+                Brands = new List<string>{"Без бренду",
+                // Смартфони / Гаджети
+                "Apple", "Samsung", "Xiaomi", "Huawei", "OnePlus", "Oppo", "Realme", "Sony", "Google", "Nokia",
                 // Ноутбуки / Комп’ютери
-                "ASUS", "Acer", "Dell", "HP", "Lenovo", "MSI", "Razer", "Microsoft",
+                "ASUS", "Acer", "Dell", "HP", "Lenovo", "MSI", "Razer",
                 // Телевізори / Smart TV
                 "TCL", "Hisense", "Panasonic", "Philips", "Sharp",
-                // Побутова техніка
-                "Bosch", "Whirlpool", "Electrolux", "Gorenje", "Beko", "Zanussi", "Miele", "Haier",
                 // Аудіо / Навушники / Колонки
-                "JBL", "Bose", "Sennheiser", "Beats", "Marshall", "Anker", "Bang & Olufsen",
-                // Фото / Відео
-                "Canon", "Nikon", "Fujifilm", "Olympus", "GoPro", "DJI",
+                "JBL", "Bose", "Beats",
                 // Ігрова техніка
-                "Nintendo", "Logitech", "HyperX", "SteelSeries", "Corsair",
+                "Nintendo", "Logitech", "HyperX", "Corsair",
                 // Принтери / Периферія
-                "Epson", "Trust", "A4Tech" },   
+                "Epson", "Trust", "Xerox",  },   
                 Filters = filter,
                 Products = products,
                 CurrentPage = page,

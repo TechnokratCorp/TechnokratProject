@@ -4,6 +4,11 @@
     ViewData["PageCss"] = "itrade.css";
 }
 <html>
+<head>
+    <link href="https://cdn.jsdelivr.net/combine/npm/daisyui@5/base/reset.css,npm/daisyui@5/base/svg.css,npm/daisyui@5/base/properties.css,npm/daisyui@5/base/rootscrollgutter.css,npm/daisyui@5/base/scrollbar.css,npm/daisyui@5/base/rootscrolllock.css,npm/daisyui@5/components/button.css,npm/daisyui@5/components/modal.css,npm/daisyui@5/theme/light.css"
+          rel="stylesheet"
+          type="text/css" />
+</head>
 <body>
     <form method="get" asp-area="User" asp-controller="Product" asp-action="Index">
         <main class="page">
@@ -202,25 +207,29 @@
                 <div class="products-list">
                     @foreach (var product in Model.Products)
                     {
-                        <a asp-area="User" asp-controller="Application" asp-action="Buy" asp-route-id="@product.id" class="product-card">
-                            <div class="product-card__img">
-                                <img src="@product.image_path"
-                                        alt="@product.title"
-                                        loading="lazy"
-                                        onerror="this.onerror=null; this.src='/img/no-image.png';" />
-                            </div>
-                            <div class="product-card__code">@product.id</div>
-                            <div class="product-card__title">@product.title</div>
-                            <div class="product-card__price_container">
-                                <div class="product-card__price_container__price">
-                                    @product.price.ToString("N0") ₴
+                        @if (product.status == true){
+                            <a asp-area="User" asp-controller="Application" asp-action="Buy" asp-route-id="@product.id" class="product-card">
+                                <div class="product-card__img">
+                                    <img src="@product.image_path"
+                                            alt="@product.title"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='/img/no-image.png';" />
                                 </div>
-                                <div class="product-card__price_container__cart-button"
-                                        onclick="event.stopPropagation()">
-                                    <img src="/assets/imgs/cart.svg" alt="Cart" loading="lazy" />
+                            
+                                <div class="product-card__title">@product.title</div>
+                                <div class="product-card__code">@product.description</div>
+                                <div class="product-card__price_container">
+                                    <div class="product-card__price_container__price">
+                                        @product.price.ToString("N0") ₴
+                                    </div>
+                                    <div class="product-card__price_container__cart-button"
+                                            onclick="event.stopPropagation()">
+                                        <img src="/assets/imgs/cart.svg" alt="Cart" loading="lazy" />
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        }
+                        
                     }
                 </div>
             </div>

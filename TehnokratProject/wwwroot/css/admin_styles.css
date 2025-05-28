@@ -25,8 +25,6 @@ img{
     max-width: 200px;
 }
 
-
-<style >
 table {
     width: 100%;
     border-collapse: collapse;
@@ -85,5 +83,32 @@ h1 {
     margin-bottom: 20px;
 }
 
-</style >
+/* Зелена кнопка */
+.btn-add {
+    background-color: green;
+    color: white; /* щоб текст був читабельним */
+}
+
+    .btn-add:hover {
+        background-color: darkgreen;
+    }
+
+/* Червона кнопка */
+.btn-delete {
+    background-color: red;
+}
+
+    .btn-delete:hover {
+        background-color: darkred;
+    }
+
+/* Жовта кнопка */
+.btn-edit {
+    background-color: gold;
+    color: black; /* щоб текст був читабельним */
+}
+
+    .btn-edit:hover {
+        background-color: goldenrod;
+    }
 

@@ -3,7 +3,7 @@
 <h1>Список товарів</h1>
 <br>
 
-<a asp-controller="Product" asp-action="Create">Додати товар</a>
+<a asp-controller="Product" asp-action="Create" class="btn btn-add">Додати товар</a>
 
 <table>
     <tr>
@@ -63,14 +63,14 @@
             <td>@product.category?.title</td>
 
             <td>
-                <form asp-controller="Product" asp-action="Edit" asp-route-id="@product.id" method="get">
-                    <input type="submit" value="Редагувати"></input>
+                <form asp-controller="Product" asp-action="Edit" asp-route-id="@product.id" method="get" >
+                    <input type="submit" value="Редагувати" class="btn btn-edit"></input>
                 </form>
 
             </td>
             <td>
-                <form asp-controller="Product" asp-action="Delete" asp-route-id="@product.id">
-                    <input type="submit" value="Видалити"></input>
+                <form asp-controller="Product" asp-action="Delete" asp-route-id="@product.id" >
+                    <input type="submit" value="Видалити" class="btn btn-delete"></input>
                 </form>
             </td>
         </tr>
