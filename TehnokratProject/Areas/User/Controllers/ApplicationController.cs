@@ -26,6 +26,11 @@ namespace TehnokratProject.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Buy(ContactForm model, int productId)
         {
+            ModelState.Remove("comment");
+            if (!ModelState.IsValid)
+            {
+                return View(model); // Повертає форму з помилками
+            }
             return await send_message(model, "buy", productId);
         }
 
@@ -36,6 +41,11 @@ namespace TehnokratProject.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Help(ContactForm model)
         {
+            ModelState.Remove("comment");
+            if (!ModelState.IsValid)
+            {
+                return View(model); // Повертає форму з помилками
+            }
             return await send_message(model, "help", 0);
         }
 

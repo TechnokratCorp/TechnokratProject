@@ -7,109 +7,60 @@
    
     <title>Форма замовлення</title>
     <style>
-        /* Загальні стилі */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fff;
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-block: 64px;
         }
 
-        /* Модальне вікно */
-        .modal {
-            background-color: #fff;
-            width: 500px;
-            max-width: 90%;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-            /* Заголовок */
-            .modal h2 {
+            .form-container h2 {
                 text-align: center;
                 font-weight: bold;
                 margin-bottom: 10px;
+                font-size: 30px;
             }
 
             /* Підзаголовок / опис */
-            .modal p {
+            .form-container p {
                 text-align: center;
                 color: #333;
                 margin-bottom: 30px;
             }
-
-        /* Група форми */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            /* Підпис до поля */
-            .form-group label {
-                display: block;
-                margin-bottom: 6px;
-                font-weight: 500;
-            }
-
-            /* Текстові поля та textarea */
-            .form-group input,
-            .form-group textarea {
-                width: 100%;
-                padding: 14px 16px;
-                font-size: 16px;
-                background-color: #eee;
-                border: none;
-                border-radius: 15px;
-                resize: none;
-                box-sizing: border-box;
-            }
-
-        /* Кнопка відправки */
-        .submit-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: #FFD54F;
-            color: #000;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-            .submit-button:hover {
-                background-color: #ffca28;
-            }
     </style>
 </head>
 <body>
-    <div class="modal">
-       
-        <h2>Бажаєте замовити ремонт чи проконсультуватись з майстром - легко!</h2>
-        <p>
+    
+    <partial name="_ValidationScriptsPartial" />
+    <form class="form-modal" asp-action="Help" asp-controller="Application">
+        <label for="order-product-modal" class="modal-close">
+            <svg width="36"
+                 height="36"
+                 viewBox="0 0 36 36"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.0002 20.1L10.6502 27.45C10.3752 27.725 10.0252 27.8625 9.6002 27.8625C9.1752 27.8625 8.82519 27.725 8.55019 27.45C8.27519 27.175 8.1377 26.825 8.1377 26.4C8.1377 25.975 8.27519 25.625 8.55019 25.35L15.9002 18L8.55019 10.65C8.27519 10.375 8.1377 10.025 8.1377 9.6C8.1377 9.175 8.27519 8.825 8.55019 8.55C8.82519 8.275 9.1752 8.1375 9.6002 8.1375C10.0252 8.1375 10.3752 8.275 10.6502 8.55L18.0002 15.9L25.3502 8.55C25.6252 8.275 25.9752 8.1375 26.4002 8.1375C26.8252 8.1375 27.1752 8.275 27.4502 8.55C27.7252 8.825 27.8627 9.175 27.8627 9.6C27.8627 10.025 27.7252 10.375 27.4502 10.65L20.1002 18L27.4502 25.35C27.7252 25.625 27.8627 25.975 27.8627 26.4C27.8627 26.825 27.7252 27.175 27.4502 27.45C27.1752 27.725 26.8252 27.8625 26.4002 27.8625C25.9752 27.8625 25.6252 27.725 25.3502 27.45L18.0002 20.1Z"
+                      fill="black" />
+            </svg>
+        </label>
+        <h3 class="title" 3> Бажаєте замовити ремонт чи проконсультуватись з майстром - легко!</h3>
+        <p class="desc">
             Залиште свої контакти, і наш спеціаліст зв'яжеться з вами найближчим часом
         </p>
 
-        <form asp-action="Help" asp-controller="Application">
-            <div class="form-group">
-                <label asp-for="name">Ім’я</label>
-                <input type="text" asp-for="name" required />
-            </div>
-            <br></br>
-            <div class="form-group">
-                <label asp-for="phone">Телефон</label>
-                <input type="tel" asp-for="phone" required />
-            </div>
-            <br></br>
-            <div class="form-group">
-                <label asp-for="comment">Ваше питання або коментар</label>
-                <textarea rows="4" asp-for="comment" required></textarea>
-            </div>
-            <br></br>
-            <button type="submit" class="submit-button">Відправити</button>
-        </form>
-    </div>
+        <span asp-validation-for="name" style="width:400px; margin:auto;" class="text-danger"></span>
+        <label style="width:400px; margin:auto;" asp-for="name" class="label">Ім'я<input asp-for="name" type="text" style="width:400px; margin:auto;" class="input" /></label>
+        <br>
+        <span asp-validation-for="phone" style="width:400px; margin:auto;" class="text-danger"></span>
+        <label style="width:400px; margin:auto;" asp-for="phone" class="label">Телефон<input asp-for="phone" pattern="^\+380\d{9}$" title="Формат: +380XXXXXXXXX" type="tel" style="width:400px; margin:auto;" class="input" /></label>
+        <br>
+        <label asp-for="comment" style="width:400px; margin:auto;" class="label">
+            Коментар до замовлення
+            <textarea asp-for="comment" rows="4" data-val="false" style="width:400px; margin:auto;" class="textarea"></textarea>
+        </label>
+
+        <button type="submit" class="primary_button">Замовити товар</button>
+        <br>
+        <br>
+    </form>
+   
 </body>

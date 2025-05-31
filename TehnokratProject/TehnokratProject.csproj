@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Areas\Admin\.indev\etc\layout.cshtml" />
     <Content Include="Areas\Admin\.indev\Feedback\Create.cshtml" />
     <Content Include="Areas\Admin\.indev\Feedback\Index.cshtml" />
     <Content Include="Areas\Admin\.indev\NewFolder\Feedback\Create.cshtml" />
@@ -31,6 +32,16 @@
     <Content Include="Areas\Admin\.indev\NewFolder\Solution\Create.cshtml" />
     <Content Include="Areas\Admin\.indev\NewFolder\Solution\Edit.cshtml" />
     <Content Include="Areas\Admin\.indev\NewFolder\Solution\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Contacts__.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Index.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Laptop.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\nСontacts.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Phone.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Printer.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Privacy.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\Tablet.cshtml" />
+    <Content Include="Areas\Admin\.indev\old\TV.cshtml" />
+    <Content Include="Areas\Admin\.indev\order-repair.cshtml" />
     <Content Include="Areas\Admin\.indev\Problem\Create.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -59,11 +70,11 @@
 
   <ItemGroup>
     <None Include="Areas\Admin\ViewModels\ProductUpdateViewModel.cs" />
-    <None Include="Areas\User\Views\Home\old\nСontacts.cshtml" />
+    <None Include="Areas\Admin\.indev\old\nСontacts.cshtml" />
     <None Include="Areas\User\Views\Services\List.cshtml" />
     <None Include="Areas\User\Views\Product\Index.cshtml" />
-    <None Include="Areas\User\Views\Home\etc\layout.cshtml" />
-    <None Include="Areas\User\Views\Home\etc\order-repair.cshtml" />
+    <None Include="Areas\Admin\.indev\etc\layout.cshtml" />
+    <None Include="Areas\Admin\.indev\order-repair.cshtml" />
     <None Include="Areas\User\Views\Home\Product.cshtml" />
     <None Include="Areas\User\Views\Services\Phone.cshtml" />
     <None Include="wwwroot\assets\imgs\.DS_Store" />

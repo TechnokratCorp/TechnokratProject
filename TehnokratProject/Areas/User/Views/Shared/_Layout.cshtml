@@ -10,13 +10,13 @@
           type="text/css" />
 
     <!-- Локальні стилі -->
-    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/css/@ViewData["PageCss"]" asp-append-version="true" />
 
     <link rel="icon" href="~/assets/imgs/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-
+  
     <!-- Mobile Header -->
     <header class="new_header mobile-only">
         <div class="new_header__second_row">
@@ -143,6 +143,7 @@
         </div>
     </div>
 
+
     @RenderBody()
 
 
@@ -205,7 +206,8 @@
             </div>
         </div>
     </footer>
-
+    @RenderSection("Scripts", required: false)
+  
     <script src="~/js/filters.js"></script>
     <script src="~/js/main.js"></script>
 </body>

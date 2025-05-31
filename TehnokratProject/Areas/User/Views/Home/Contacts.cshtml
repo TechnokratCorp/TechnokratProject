@@ -2,6 +2,7 @@
     ViewData["Title"] = "Контакти";
     ViewData["PageCss"] = "contacts.css";
 }
+@model TehnokratProject.Models.ContactForm
 <body>
     <main class="page">
         <div class="container">
@@ -81,22 +82,22 @@
             </div>
         </div>
         <div class="mobile-only padding-x">
-            <form asp-action="Help" asp-controller="Application" class="form">
+            <form asp-area="User" asp-action="Help" asp-controller="Application" method="post" class="form">
                 <h3 class="form__title">
                     Заповніть форму, і ми швидко зв'яжемося з вами
                 </h3>
-                <label class="label">Ім'я<input type="text" class="input" /></label>
+                <label asp-for="name" class="label">Ім'я<input asp-for="name" type="text" class="input" /></label>
 
-                <label class="label">Телефон<input type="tel" class="input" /></label>
+                <label asp-for="phone" class="label">Телефон<input asp-for="phone" type="tel" class="input" /></label>
 
-                <label class="label">
+                <label asp-for="comment" class="label">
                     Коментар до замовлення
-                    <textarea class="textarea"></textarea>
+                    <textarea asp-for="comment" class="textarea"></textarea>
                 </label>
 
-                <button class="primary_button">Отримати консультацію</button>
+                <button type ="submit" class="primary_button">Отримати консультацію</button>
             </form>
         </div>
     </main>
 </body>
-</html>
+
