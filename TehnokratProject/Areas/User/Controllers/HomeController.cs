@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 using TehnokratProject.Data;
 using TehnokratProject.Models;
 
@@ -9,10 +11,12 @@ namespace TehnokratProject.Areas.User.Controllers
     [Area("User")]
     public class HomeController : Controller
     {
+        private readonly IConfiguration _config;
         ApplicationDbContext db;
-        public HomeController(ApplicationDbContext context)
+        public HomeController(IConfiguration config, ApplicationDbContext context)
         {
             db = context;
+            _config = config;
         }
         public IActionResult Contacts()
         {
@@ -49,5 +53,40 @@ namespace TehnokratProject.Areas.User.Controllers
         //{
         //    return View();
         //}
+        [HttpPost]
+        public async Task<IActionResult> send_message(ContactForm model)
+        {
+            ModelState.Remove("comment");
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Contacts");
+            }
+            var from = new MailAddress("dmitrywork33@gmail.com", "Форма з сайту"); // email smtp
+            var to = new MailAddress("kurson.d@gmail.com"); // Email менеджера
+
+            string subject = "";
+            subject = "НОВА ЗАЯВКА НА РЕМОНТ";
+            var message = new MailMessage(from, to)
+            {
+                Subject = subject,
+                Body = $"Ім’я: {model.name}\nНомер: {model.phone}\nПовідомлення: {model.comment}"
+            };
+            var email = _config["Smtp:Email"];
+            var password = _config["Smtp:Password"];
+            var host = _config["Smtp:Host"];
+            var port = int.Parse(_config["Smtp:Port"]);
+            var smtp = new SmtpClient
+            {
+                Host = host,
+                Port = port,
+                EnableSsl = true,
+                Credentials = new NetworkCredential(email, password)
+            };
+
+            await smtp.SendMailAsync(message);
+            ViewBag.Message = "Повідомлення надіслано!";
+
+            return RedirectToAction("Success", "Application", new { area = "User" });
+        }
     }
 }

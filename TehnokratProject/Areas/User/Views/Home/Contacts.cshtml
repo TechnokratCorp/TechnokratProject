@@ -59,45 +59,59 @@
                     Ми допоможемо!
                 </h2>
                 <div class="desktop-only">
-                    <form class="form">
+                    <form asp-action="send_message" asp-controller="Home" asp-area="User" method="post" class="form">
+                        @Html.AntiForgeryToken()
                         <h3 class="form__title">
                             Заповніть форму, і ми швидко зв'яжемося з вами
                         </h3>
-                        <label class="label">
-                            Ім'я<input type="text" class="input" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                        <label asp-for="name" class="label">
+                            Ім'я
+                            <input asp-for="name" class="input" />
                         </label>
 
-                        <label class="label">
-                            Телефон<input type="tel" class="input" />
+                        <span asp-validation-for="phone" class="text-danger"></span>
+                        <label asp-for="phone" class="label">
+                            Телефон
+                            <input asp-for="phone" class="input" pattern="^\+380\d{9}$" title="Формат: +380XXXXXXXXX" />
                         </label>
 
-                        <label class="label">
+                        <label asp-for="comment" class="label">
                             Коментар до замовлення
-                            <textarea class="textarea"></textarea>
+                            <textarea asp-for="comment" class="textarea" data-val="false"></textarea>
                         </label>
 
-                        <button class="primary_button">Отримати консультацію</button>
+                        <button type="submit" class="primary_button">Отримати консультацію</button>
                     </form>
+
                 </div>
             </div>
         </div>
         <div class="mobile-only padding-x">
-            <form asp-area="User" asp-action="Help" asp-controller="Application" method="post" class="form">
+            <form asp-action="send_message" asp-controller="Home" asp-area="User" method="post" class="form">
+
+                @Html.AntiForgeryToken()
                 <h3 class="form__title">
                     Заповніть форму, і ми швидко зв'яжемося з вами
                 </h3>
+                <span asp-validation-for="name" class="text-danger"></span>
                 <label asp-for="name" class="label">Ім'я<input asp-for="name" type="text" class="input" /></label>
-
-                <label asp-for="phone" class="label">Телефон<input asp-for="phone" type="tel" class="input" /></label>
+                <span asp-validation-for="phone" class="text-danger"></span>
+                <label asp-for="phone" class="label">Телефон<input asp-for="phone" pattern="^\+380\d{9}$" title="Формат: +380XXXXXXXXX" type="tel" class="input" /></label>
 
                 <label asp-for="comment" class="label">
                     Коментар до замовлення
-                    <textarea asp-for="comment" class="textarea"></textarea>
+                    <textarea asp-for="comment" data-val="false" class="textarea"></textarea>
                 </label>
 
                 <button type ="submit" class="primary_button">Отримати консультацію</button>
             </form>
         </div>
     </main>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 </body>
 
