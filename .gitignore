@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 **/wwwroot/img/products/
+/TehnokratProject/appsettings.Production.json
+/TehnokratProject/appsettings.Development.json
+/TehnokratProject/appsettings.json
