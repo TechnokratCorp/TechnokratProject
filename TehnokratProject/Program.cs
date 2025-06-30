@@ -5,7 +5,7 @@ using TehnokratProject.Data;
 namespace TehnokratProject
 {
     public class Program
-    {
+    {//test2
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
