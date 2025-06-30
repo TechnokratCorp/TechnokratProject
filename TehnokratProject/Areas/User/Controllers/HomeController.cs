@@ -71,10 +71,15 @@ namespace TehnokratProject.Areas.User.Controllers
                 Subject = subject,
                 Body = $"Ім’я: {model.name}\nНомер: {model.phone}\nПовідомлення: {model.comment}"
             };
-            var email = _config["Smtp:Email"];
-            var password = _config["Smtp:Password"];
-            var host = _config["Smtp:Host"];
-            var port = int.Parse(_config["Smtp:Port"]);
+            var email = _config["Smtp:Email"] ?? Environment.GetEnvironmentVariable("SMTP_EMAIL");
+            var password = _config["Smtp:Password"] ?? Environment.GetEnvironmentVariable("SMTP_PASSWORD");
+            var host = _config["Smtp:Host"] ?? Environment.GetEnvironmentVariable("SMTP_HOST");
+            var portString = _config["Smtp:Port"] ?? Environment.GetEnvironmentVariable("SMTP_PORT");
+            int port = 587;
+            if (!int.TryParse(portString, out port))
+            {
+                port = 587;
+            }
             var smtp = new SmtpClient
             {
                 Host = host,

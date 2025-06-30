@@ -25,8 +25,8 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
-            string storedLogin = _configuration["AdminLogin"];
-            string storedPasswordHash = _configuration["AdminPasswordHash"];
+            string storedLogin = _configuration["AdminLogin"] ?? Environment.GetEnvironmentVariable("ADMIN_LOGIN");
+            string storedPasswordHash = _configuration["AdminPasswordHash"] ?? Environment.GetEnvironmentVariable("ADMIN_PASSWORD_HASH");
             string passwordHash = HashPassword(password);
 
             if (username == storedLogin && passwordHash == storedPasswordHash)
