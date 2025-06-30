@@ -1,12 +1,14 @@
-name: Build and Deploy ASP.NET MVC
+name: Build
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: 
+      - main
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     env:
         DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
@@ -30,10 +32,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./TehnokratProject.sln
 
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build ./TehnokratProject.sln --configuration Release --no-restore
 
     - name: Publish
       run: dotnet publish -c Release -o ./publish
