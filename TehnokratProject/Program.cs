@@ -1,11 +1,11 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TehnokratProject.Data;
 
 namespace TehnokratProject
 {
     public class Program
-    {
+    {//test
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -42,7 +42,7 @@ namespace TehnokratProject
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("?? DB Migration Error: " + ex.Message);
+                    Console.WriteLine("⚠️ DB Migration Error: " + ex.Message);
                 }
             }
 
