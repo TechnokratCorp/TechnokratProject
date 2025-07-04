@@ -1,26 +1,34 @@
-name: Build
+name: Build and Deploy
 
 on:
-  workflow_dispatch:
   push:
-    branches: 
-      - main
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
+  ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
+  ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
+  SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+  SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+  SMTP_HOST: ${{ secrets.SMTP_HOST }}
+  SMTP_PORT: ${{ secrets.SMTP_PORT }}
+  FTP_SERVER: ${{ secrets.FTP_SERVER }}
+  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+  AZURE_WEBAPP_NAME: TehnokratProject20250702070220
+  AZURE_WEBAPP_PACKAGE_PATH: ./publish
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 8.0.x
+  WORKING_DIRECTORY: .
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    env:
-        DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
-        ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
-        ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
-        SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
-        SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-        SMTP_HOST: ${{ secrets.SMTP_HOST }}
-        SMTP_PORT: ${{ secrets.SMTP_PORT }}
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
     steps:
     - name: Checkout code
@@ -29,19 +37,41 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
     - name: Restore dependencies
       run: dotnet restore ./TehnokratProject.sln
 
     - name: Build
-      run: dotnet build ./TehnokratProject.sln --configuration Release --no-restore
+      run: dotnet build ./TehnokratProject.sln --configuration ${{ env.CONFIGURATION }} --no-restore
 
     - name: Publish
-      run: dotnet publish -c Release -o ./publish
+      run: dotnet publish ./TehnokratProject.sln -c ${{ env.CONFIGURATION }} -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} --no-build
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: published-app
-        path: ./publish
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: published-app
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

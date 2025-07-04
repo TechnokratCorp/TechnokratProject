@@ -80,7 +80,7 @@ namespace TehnokratProject.Areas.User.Controllers
             int port = 587;
             if (!int.TryParse(portString, out port))
             {
-                port = 587; 
+                port = 587;
             }
             var smtp = new SmtpClient
             {

@@ -88,6 +88,7 @@ namespace TehnokratProject.Areas.User.Controllers
                 Credentials = new NetworkCredential(email, password)
             };
 
+
             await smtp.SendMailAsync(message);
             ViewBag.Message = "Повідомлення надіслано!";
 
