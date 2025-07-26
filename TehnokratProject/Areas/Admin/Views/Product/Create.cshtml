@@ -4,6 +4,10 @@
 <br>
 
 <form asp-action="Create" asp-controller="Product" enctype="multipart/form-data">
+   
+    <p>
+        <input type="hidden" asp-for="id" />
+    </p>
     <p>
         <label asp-for="title">Назва</label><br />
         <input type="text" asp-for="title" />

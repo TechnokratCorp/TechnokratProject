@@ -41,8 +41,23 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateViewModel model)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    // Знову заповнюємо списки для селектів (інакше будуть null)
+            //    model.BrandOptions = GetBrands();
+            //    model.StateOptions = GetStates(); // Твій метод
+            //    model.Categories = await db.categories.ToListAsync();
+            //    model.ExistingImages = await db.ProductImages
+            //        .Where(img => img.ProductId == model.id)
+            //        .ToListAsync();
+
+            //    return View(model); // Повертає форму з тими ж даними та помилками
+            //}
+
+
             var product = new Product
             {
+                id = model.id,
                 title = model.title,
                 description = model.description,
                 status = true,

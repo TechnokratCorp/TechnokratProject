@@ -6,8 +6,7 @@ namespace TehnokratProject.Areas.Admin.ViewModels
 {
     public class ProductCreateViewModel
     {
-       
-        
+        public int id { get; set; }
         public string title { get; set; }
         public string brand { get; set; }
         public string description { get; set; }
@@ -22,6 +21,7 @@ namespace TehnokratProject.Areas.Admin.ViewModels
         // Завантажене зображення
         [Display(Name = "Зображення")]
         public List<IFormFile> ImageFiles { get; set; }
+        public List<ProductImage> ExistingImages { get; set; }
 
         public List<string> StateOptions { get; set; } // Список для select
         public List<string> BrandOptions { get; set; } // Список для select
