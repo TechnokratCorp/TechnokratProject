@@ -21,7 +21,7 @@ namespace TehnokratProject.Areas.Admin.ViewModels
 
         // Завантажене зображення
         [Display(Name = "Зображення")]
-        public IFormFile ImageFile { get; set; }
+        public List<IFormFile> ImageFiles { get; set; }
 
         public List<string> StateOptions { get; set; } // Список для select
         public List<string> BrandOptions { get; set; } // Список для select
@@ -30,7 +30,7 @@ namespace TehnokratProject.Areas.Admin.ViewModels
         
         public ProductCreateViewModel()
         {
-            Categories = Enumerable.Empty<Category>();
+            Categories = Enumerable.Empty<Category>()   ;
         }
     }
 }

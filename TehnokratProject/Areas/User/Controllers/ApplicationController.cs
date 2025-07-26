@@ -56,8 +56,8 @@ namespace TehnokratProject.Areas.User.Controllers
 
         public async Task<IActionResult> send_message(ContactForm model, string type, int productId)
         {
-            var from = new MailAddress("dmitrywork33@gmail.com", "Форма з сайту"); // email smtp
-            var to = new MailAddress("kurson.d@gmail.com"); // Email менеджера
+            var from = new MailAddress("dmitrywork33@gmail.com", "Форма з сайту"); // має збігатися з email smtp (це email відправника)
+            var to = new MailAddress("tstm@ukr.net"); // Email менеджера
 
             string subject = "";
             if (type == "buy")

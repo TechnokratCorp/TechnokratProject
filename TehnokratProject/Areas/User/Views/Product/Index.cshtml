@@ -130,20 +130,43 @@
                         </div>
                     </div>
                 </div>
-            
+
 
                 <div class="products-list">
                     @foreach (var product in Model.Products)
                     {
-                        @if (product.status == true){
+                        if (product.status == true)
+                        {
+                            var mainImage = product.Images?.FirstOrDefault()?.ImagePath ?? "/img/no-image.png";
+                            Console.WriteLine(mainImage);
+                            Console.WriteLine(product.Images?.Count());
+                            var thumbnails = product.Images?.Skip(1).ToList() ?? new List<ProductImage>();
+                            string mainImageId = $"main-image-{product.id}";
                             <a asp-area="User" asp-controller="Application" asp-action="Buy" asp-route-id="@product.id" class="product-card">
                                 <div class="product-card__img">
-                                    <img src="@product.image_path"
+                                    <img id="@mainImageId"
+                                            src="@mainImage"
                                             alt="@product.title"
                                             loading="lazy"
+                                            class="main-image"
                                             onerror="this.onerror=null; this.src='/img/no-image.png';" />
                                 </div>
-                            
+
+                                @if (thumbnails.Count > 0)
+                                {
+                                    <div class="product-card__thumbnails">
+                                        @foreach (var image in thumbnails)
+                                        {
+                                            <img src="@image.ImagePath"
+                                                    alt="Thumbnail"
+                                                    class="thumbnail"
+                                                    loading="lazy"
+                                                    onclick="document.getElementById('@mainImageId').src = this.src"
+                                                    onerror="this.onerror=null; this.src='/img/no-image.png';" />
+                                        }
+                                    </div>
+                                }
+
                                 <div class="product-card__title">@product.title</div>
                                 <div class="product-card__code">@product.description</div>
                                 <div class="product-card__price_container">
@@ -157,9 +180,9 @@
                                 </div>
                             </a>
                         }
-                        
                     }
                 </div>
+
             </div>
             <!-- Пагінація -->
             <div class="pagination">
@@ -390,5 +413,25 @@
         checkbox.checked = !checkbox.checked;
         this.classList.toggle('active');
       });
+    });
+</script>
+<script>
+    const previewBox = document.getElementById('image-preview');
+    const previewImg = document.getElementById('image-preview-img');
+
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.addEventListener('mouseenter', (e) => {
+            previewImg.src = thumb.src;
+            previewBox.style.display = 'block';
+        });
+
+        thumb.addEventListener('mousemove', (e) => {
+            previewBox.style.top = (e.pageY + 20) + 'px';
+            previewBox.style.left = (e.pageX + 20) + 'px';
+        });
+
+        thumb.addEventListener('mouseleave', () => {
+            previewBox.style.display = 'none';
+        });
     });
 </script>

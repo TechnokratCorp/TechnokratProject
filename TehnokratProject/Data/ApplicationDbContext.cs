@@ -11,6 +11,7 @@ namespace TehnokratProject.Data
         public DbSet<Problem> problems { get; set; }
         public DbSet<Solution> solutions { get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
           : base(options)
@@ -41,6 +42,11 @@ namespace TehnokratProject.Data
               .WithMany(p => p.solutions)
               .HasForeignKey(g => g.problem_id);
 
+            modelBuilder.Entity<ProductImage>()
+                .HasOne(pi => pi.Product)
+                .WithMany(p => p.Images)
+                .HasForeignKey(pi => pi.ProductId)
+                .OnDelete(DeleteBehavior.Cascade); // автоматично видаляти картинки при видаленні товару
 
             base.OnModelCreating(modelBuilder);
         }

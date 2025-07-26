@@ -20,7 +20,7 @@ namespace TehnokratProject.Areas.User.Controllers
         [HttpGet]
         public IActionResult Index(ProductFilterModel filter, int page = 1, int pageSize = 12)
         {
-            var query = db.products.AsQueryable();
+            var query = db.products.Include(p => p.Images).AsQueryable();
 
             // Мінімальна ціна
             if (filter.MinPrice.HasValue)

@@ -21,6 +21,7 @@ namespace TehnokratProject.Areas.Admin.Controllers
         {
             var products = await db.products
                 .Include(p => p.category)
+                .Include(p => p.Images)
                 .ToListAsync();
             return View(products);
         }
@@ -40,44 +41,48 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateViewModel model)
         {
-            string fileName = null;
-
-            if (model.ImageFile != null && model.ImageFile.Length > 0)
-            {
-                // Унікальна назва файлу
-                fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ImageFile.FileName);
-
-                // Шлях для збереження
-                string uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/products");
-
-                // Якщо папки немає — створюємо
-                if (!Directory.Exists(uploads))
-                {
-                    Directory.CreateDirectory(uploads);
-                }
-
-                // Повний шлях до файлу
-                string filePath = Path.Combine(uploads, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await model.ImageFile.CopyToAsync(stream);
-                }
-            }
-
             var product = new Product
             {
                 title = model.title,
                 description = model.description,
                 status = true,
                 quantity = 0,
-                image_path = "/img/products/" + fileName, // <- Шлях для фронтенду
                 category_id = model.category_id.Value,
                 category = db.categories.FirstOrDefault(p => p.id == model.category_id),
                 price = model.price,
                 state = model.state,
-                brand = model.brand
+                brand = model.brand,
+                Images = new List<ProductImage>()
             };
+
+            if (model.ImageFiles != null && model.ImageFiles.Count > 0)
+            {
+                string uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/products");
+
+                if (!Directory.Exists(uploads))
+                    Directory.CreateDirectory(uploads);
+
+                foreach (var file in model.ImageFiles)
+                {
+                    if (file != null && file.Length > 0)
+                    {
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                        string filePath = Path.Combine(uploads, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        product.Images.Add(new ProductImage
+                        {
+                            ImagePath = "/img/products/" + fileName,
+                            ProductId = product.id, //?
+                            Product = product,    //?
+                        });
+                    }
+                }
+            }
 
             db.products.Add(product);
             await db.SaveChangesAsync();
@@ -89,24 +94,13 @@ namespace TehnokratProject.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProductUpdateViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    foreach (var state in ModelState)
-            //    {
-            //        foreach (var error in state.Value.Errors)
-            //        {
-            //            Console.WriteLine($"Field: {state.Key}, Error: {error.ErrorMessage}");
-            //        }
-            //    }
-            //    model.BrandOptions = GetBrands();
+            var existing = await db.products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.id == model.id);
 
-            //    return View("Edit", model);
-            //}
-
-            var existing = await db.products.FirstOrDefaultAsync(p => p.id == model.id);
             if (existing == null) return NotFound();
 
-            // Оновлюємо поля
+            // Оновлення властивостей
             existing.title = model.title;
             existing.description = model.description;
             existing.price = model.price;
@@ -115,35 +109,38 @@ namespace TehnokratProject.Areas.Admin.Controllers
             existing.state = model.state;
             existing.brand = model.brand;
 
-            // Якщо додано нове зображення
-            if (model.ImageFile != null && model.ImageFile.Length > 0)
+            // Завантаження нових зображень (якщо є)
+            if (model.ImageFiles != null && model.ImageFiles.Count > 0)
             {
                 string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/products");
-                string newFileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ImageFile.FileName);
-                string newFilePath = Path.Combine(uploadsFolder, newFileName);
 
-                // Зберігаємо нове зображення
-                using (var stream = new FileStream(newFilePath, FileMode.Create))
-                {
-                    await model.ImageFile.CopyToAsync(stream);
-                }
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
 
-                // Можна видалити старе зображення
-                if (!string.IsNullOrEmpty(model.ExistingImagePath))
+                foreach (var file in model.ImageFiles)
                 {
-                    string oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", model.ExistingImagePath.TrimStart('/'));
-                    if (System.IO.File.Exists(oldPath))
+                    if (file != null && file.Length > 0)
                     {
-                        System.IO.File.Delete(oldPath);
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                        string filePath = Path.Combine(uploadsFolder, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        // Додаємо нову картинку до товару
+                        existing.Images.Add(new ProductImage
+                        {
+                            ImagePath = "/img/products/" + fileName
+                        });
                     }
                 }
-
-                // Зберігаємо новий шлях
-                existing.image_path = "/img/products/" + newFileName;
             }
 
             db.products.Update(existing);
             await db.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
@@ -152,7 +149,10 @@ namespace TehnokratProject.Areas.Admin.Controllers
         {
             if (id == null) return NotFound();
 
-            var product = await db.products.FirstOrDefaultAsync(p => p.id == id);
+            var product = await db.products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.id == id);
+
             if (product == null) return NotFound();
 
             var vm = new ProductUpdateViewModel
@@ -165,7 +165,8 @@ namespace TehnokratProject.Areas.Admin.Controllers
                 status = product.status,
                 state = product.state,
                 brand = product.brand,
-                ExistingImagePath = product.image_path,
+                ExistingImagePaths = product.Images.Select(img => img.ImagePath).ToList(),
+                ExistingImages = product.Images.ToList(),
                 BrandOptions = GetBrands(),
                 StateOptions = GetStates(),
             };
@@ -173,19 +174,48 @@ namespace TehnokratProject.Areas.Admin.Controllers
             return View(vm);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id != null)
+            var product = await db.products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.id == id);
+
+            if (product == null)
+                return NotFound();
+
+            // 1. Видаляємо файли з сервера
+            foreach (var image in product.Images)
             {
-                Product? product = await db.products.FirstOrDefaultAsync(p => p.id == id);
-                if (product != null)
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", image.ImagePath.TrimStart('/'));
+
+                if (System.IO.File.Exists(fullPath))
                 {
-                    db.products.Remove(product);
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    System.IO.File.Delete(fullPath);
                 }
             }
-            return NotFound();
+
+            // 2. Видаляємо сам товар і пов’язані зображення з БД
+            db.ProductImages.RemoveRange(product.Images); // Якщо не каскадно
+            db.products.Remove(product);
+
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteImage(int id)
+        {
+            var image = await db.ProductImages.FindAsync(id);
+            if (image != null)
+            {
+                db.ProductImages.Remove(image);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Edit", new { id = image.ProductId });
+            }
+
+            return RedirectToAction("Index");
         }
 
         private List<string> GetStates()
@@ -213,6 +243,5 @@ namespace TehnokratProject.Areas.Admin.Controllers
                 "Epson", "Trust", "Xerox", 
             };
         }
-
     }
 }

@@ -22,9 +22,12 @@ namespace TehnokratProject.Areas.Admin.ViewModels
 
         //// Завантажене зображення
         [Display(Name = "Зображення")]
-        public IFormFile ImageFile { get; set; }
-        public string? ExistingImagePath { get; set; }
+        public List<IFormFile> ImageFiles { get; set; }
+        public List<ProductImage> ExistingImages { get; set; }
+
+        public List<string> ExistingImagePaths { get; set; } // для відображення старих зображень
         public List<string> StateOptions { get; set; } // Список для select
+        
         public ProductUpdateViewModel()
         {
             Categories = Enumerable.Empty<Category>();
